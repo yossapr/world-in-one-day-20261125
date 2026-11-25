@@ -167,20 +167,20 @@ html,body {{ width:{SIZE}px; height:{SIZE}px; overflow:hidden; background:#f8f4e
 .kpis {{ display:flex; margin:6px 14px 0; border-top:1px solid #141414; border-bottom:1px solid #141414; }}
 .kpi {{ flex:1; padding:3px 8px 3px; border-left:1px solid #cfc6b2; }}
 .kpi:first-child {{ border-left:none; padding-left:2px; }}
-.kpi b {{ display:block; font:bold 24px Georgia, serif; line-height:26px; color:#b3261e; }}
+.kpi b {{ display:block; font:bold 30px Georgia, serif; line-height:31px; color:#b3261e; }}
 .kpi span {{ display:block; font:10px/12px Arial, sans-serif; color:#333; }}
 .leads {{ display:flex; gap:14px; margin:7px 14px 0; }}
 .lead {{ flex:1; }}
 .scene {{ position:relative; overflow:hidden; border-radius:2px; }}
-.lead .scene {{ height:118px; }}
+.lead .scene {{ height:116px; }}
 .scene svg {{ width:100%; height:100%; display:block; }}
 .num {{ position:absolute; left:6px; bottom:6px; width:18px; height:18px; border-radius:50%; color:#fff;
   font:bold 10px/18px Arial, sans-serif; text-align:center; border:1.5px solid #fff; }}
 .meta {{ display:flex; align-items:center; gap:6px; margin-top:6px; }}
 .tag {{ color:#fff; font:bold 9px Arial, sans-serif; letter-spacing:1px; padding:2px 5px; }}
 .where {{ font:bold 9px Arial, sans-serif; letter-spacing:.8px; color:#555; white-space:nowrap; overflow:hidden; }}
-.lead h2 {{ font-size:21px; line-height:23px; margin-top:4px; }}
-.lead p {{ font:12px/15px Georgia, serif; color:#2a2a2a; margin-top:3px; }}
+.lead h2 {{ font-size:25px; line-height:27px; margin-top:4px; letter-spacing:-.3px; }}
+.lead p {{ font:12.5px/15.5px Georgia, serif; color:#2a2a2a; margin-top:3px; }}
 .src {{ font:bold 7.5px Arial, sans-serif; letter-spacing:.8px; color:#8a8170; margin-top:3px; }}
 .rule {{ margin:6px 14px 0; border-top:2px solid #141414; display:flex; justify-content:space-between;
   font:bold 9.5px Arial, sans-serif; letter-spacing:1.5px; padding-top:3px; }}
@@ -199,7 +199,7 @@ html,body {{ width:{SIZE}px; height:{SIZE}px; overflow:hidden; background:#f8f4e
 .card .scene {{ height:66px; }}
 .card .where {{ margin-top:4px; display:flex; align-items:center; gap:4px; font-size:8px; overflow:visible; }}
 .card .where i {{ width:7px; height:7px; display:inline-block; }}
-.card h3 {{ font-size:15px; line-height:17px; margin-top:2px; }}
+.card h3 {{ font-size:16px; line-height:18px; margin-top:2px; letter-spacing:-.2px; }}
 .card p {{ font:10.5px/13px Arial, sans-serif; color:#333; margin-top:2px; }}
 .bottom {{ display:flex; gap:14px; margin:7px 14px 0; border-top:2px solid #141414; padding-top:5px; }}
 .mapbox {{ width:330px; flex:none; }}

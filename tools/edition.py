@@ -52,25 +52,25 @@ LEADS = [
     dict(
         art="launch", tag="LIFTOFF", region="asia", place="JIUQUAN, CHINA",
         beat="SPACE", sure="CONFIRMED",
-        head="Shenzhou-24 lifts off with Pakistan's first astronaut",
-        dek="A Long March 2F rose from Jiuquan on Wednesday morning; Muhammad Zeeshan "
-            "Ali is the first foreigner to fly to Tiangong, which the crew reached hours later.",
+        head="Shenzhou-24 flies a Pakistani to Tiangong",
+        dek="Zeeshan Ali is the first foreigner to fly to Tiangong; the crew "
+            "docked hours after the Long March 2F lifted off.",
         src="XINHUA · AA · REUTERS",
     ),
     dict(
         art="markets", tag="SELL-OFF", region="asia", place="SEOUL · TAIPEI · TOKYO",
         beat="MARKETS", sure="CONFIRMED",
-        head="Asia's chip stocks plunge on AI doubts",
-        dek="Kospi −6.2%, Taiex −4.8%, Nikkei −2.8%; Samsung −9.9% and SK Hynix "
-            "−11.1% as Nvidia CEO Huang's return fails to calm markets.",
+        head="Asia's chip stocks crash on AI doubts",
+        dek="Samsung −9.9%, SK Hynix −11.1%: Nvidia CEO Huang's return "
+            "fails to calm markets; Taiex −4.8%.",
         src="AL JAZEERA · AFP",
     ),
     dict(
         art="hormuz", tag="WAR AT SEA", region="mideast", place="STRAIT OF HORMUZ",
         beat="IRAN WAR", sure="CLAIM",
         head="Two oil tankers hit mines and burn, Iran says",
-        dek="Iran's IRGC Navy says the ships struck naval mines on an "
-            "“unauthorised route” early on Wednesday; no independent confirmation yet.",
+        dek="The IRGC Navy says they took an “unauthorised route” early "
+            "on Wednesday; not independently confirmed.",
         src="IRIB · AA · ARAB NEWS",
     ),
 ]
@@ -105,10 +105,10 @@ CARDS = [
          head="Ukrainian drones hit two refineries",
          dek="Fires reported at Syzran and Kuibyshev; Putin had called retaliation “inevitable”.",
          src="KYIV INDEPENDENT · WORLD"),
-    dict(art="sudan", region="africa", place="KHARTOUM, SUDAN", sure="OFFICIAL",
-         head="Sudan rejects Ethiopia's peace offer",
-         dek="Army-backed government says Addis Ababa is not neutral in the war with the RSF.",
-         src="RADIO TAMAZUJ · NEWS.AZ"),
+    dict(art="ebola", region="africa", place="ITURI, DR CONGO", sure="OFFICIAL",
+         head="WHO pulls staff out of Ebola zone hospital",
+         dek="Team sheltered 3 days in Akwe amid army–CRP fighting; Mongbwalu team moved.",
+         src="WHO · ARAB NEWS · ANI"),
 ]
 
 # Map pins: (number, lon, lat, region). Numbers match leads (1-3) and cards (4-11).
@@ -116,7 +116,7 @@ PINS = [
     (1, 100.3, 40.96, "asia"), (2, 126.98, 37.57, "asia"), (3, 56.3, 26.6, "mideast"),
     (4, 149.13, -35.28, "oceania"), (5, -73.97, 40.75, "global"), (6, 114.06, 22.54, "asia"),
     (7, 50.16, 26.64, "mideast"), (8, 106.6, -6.6, "asia"), (9, 90.41, 23.81, "asia"),
-    (10, 48.47, 53.16, "europe"), (11, 32.56, 15.5, "africa"),
+    (10, 48.47, 53.16, "europe"), (11, 30.0, 1.9, "africa"),
 ]
 
 # Briefs: (number, place, text, region). Short and attributed.
@@ -136,7 +136,7 @@ BRIEFS = [
     (24, "LONDON", "Tube strike shuts Circle and Piccadilly lines", "europe"),
     (25, "BRUSSELS", "EU weighs €50bn fund for AI and quantum firms", "europe"),
     (26, "BENGHAZI", "Two Libyan soldiers die after Ukraine port attack", "africa"),
-    (27, "KHARTOUM", "UN says drone attack damaged one of its buildings", "africa"),
+    (27, "KHARTOUM", "Sudan rejects Ethiopia's offer to host peace talks", "africa"),
     (28, "HAVANA", "WHO chief urges end to US fuel blockade of Cuba", "americas"),
     (29, "WASHINGTON", "Trump team shelves business offers to Russia: FT", "americas"),
     (30, "WASHINGTON", "Hackers breached a CIA–ODNI unclassified system", "americas"),
@@ -153,5 +153,5 @@ DATE_CHECK = (
 
 SOURCES = (
     "Sources: Al Jazeera · Anadolu · AFP · Reuters · AAP · ABC · NBC · CNBC · TIME · "
-    "Xinhua · IRIB · UNODC · Kyiv Independent · AP · Radio Tamazuj · PACNEWS · TfL · FT · Politico"
+    "Xinhua · IRIB · UNODC · WHO · Kyiv Independent · AP · Radio Tamazuj · PACNEWS · TfL · FT · Politico"
 )

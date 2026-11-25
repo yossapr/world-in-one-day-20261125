@@ -387,6 +387,33 @@ def signing():
 </svg>"""
 
 
+def ebola():
+    """A clinic in Ituri with smoke from fighting behind it; a white aid convoy drives staff out."""
+    return """
+<svg viewBox="0 0 240 84" preserveAspectRatio="xMidYMid slice">
+ <rect width="240" height="84" fill="#c9d9c2"/>
+ <path d="M0 40 Q40 30 80 38 T160 34 T240 38 V84 H0Z" fill="#5f8f4e"/>
+ <path d="M150 34 C140 18 166 12 156 -2 C182 10 178 26 166 36Z" fill="#555" opacity="0.55"/>
+ <path d="M196 36 C190 24 206 20 200 8 C216 18 214 28 206 38Z" fill="#555" opacity="0.45"/>
+ <rect y="60" width="240" height="24" fill="#a8835a"/>
+ <rect x="22" y="26" width="92" height="34" fill="#f4f1e8" stroke="#b5ab95"/>
+ <path d="M18 27 L68 12 L118 27Z" fill="#b3261e"/>
+ <rect x="58" y="33" width="20" height="20" fill="#fff" stroke="#ddd"/>
+ <path d="M68 36 V50 M61 43 H75" stroke="#d62828" stroke-width="5"/>
+ <rect x="30" y="34" width="12" height="10" fill="#7fa3c0"/><rect x="92" y="34" width="12" height="10" fill="#7fa3c0"/>
+ <rect x="44" y="48" width="10" height="12" fill="#6b4a2a"/>
+ <g transform="translate(150,52)">
+  <rect x="0" y="0" width="40" height="14" rx="2" fill="#fbfbfb" stroke="#999"/>
+  <rect x="26" y="-6" width="14" height="10" rx="2" fill="#fbfbfb" stroke="#999"/>
+  <rect x="29" y="-4" width="9" height="5" fill="#7fa3c0"/>
+  <text x="13" y="10" font-size="6" fill="#1f6fb2" text-anchor="middle" font-family="Arial" font-weight="bold">WHO</text>
+  <circle cx="9" cy="15" r="3.5" fill="#222"/><circle cx="32" cy="15" r="3.5" fill="#222"/>
+ </g>
+ <path d="M196 64 h20 M200 69 h24" stroke="#fff" stroke-width="1.2" opacity="0.8"/>
+ <text x="8" y="20" font-size="7" fill="#1d3557" font-family="Arial" font-weight="bold">AKWE · 3 DAYS</text>
+</svg>"""
+
+
 ART = dict(launch=launch, markets=markets, hormuz=hormuz, court=court, drones=drones,
            mine=mine, garment=garment, treaty=signing, refinery=refinery, sudan=sudan, cuba=cuba,
-           femicide=femicide)
+           femicide=femicide, ebola=ebola)
