@@ -33,7 +33,7 @@ MAX_BYTES = 1048576
 
 # Map frame: equirectangular, longitudes -170..190 so the Pacific islands stay whole.
 LON0, LON1, LAT0, LAT1 = -170.0, 190.0, -45.0, 75.0
-MAP_W, MAP_H = 288, 96
+MAP_W, MAP_H = 330, 110
 
 
 def esc(s):
@@ -206,7 +206,7 @@ html,body {{ width:{SIZE}px; height:{SIZE}px; overflow:hidden; background:#f8f4e
 .timeline .ev {{ flex:1; white-space:nowrap; border-left:2px solid #b3261e; padding-left:5px; }}
 .timeline .ev b {{ color:#b3261e; }}
 .cards {{ display:grid; grid-template-columns:repeat(5,1fr); gap:7px 11px; margin:5px 14px 0; }}
-.card .scene {{ height:58px; }}
+.card .scene {{ height:63px; }}
 .card .where {{ margin-top:4px; display:flex; align-items:center; gap:4px; font-size:8px; overflow:visible; }}
 .card .where i {{ width:7px; height:7px; display:inline-block; }}
 .card h3 {{ font-size:14.5px; line-height:16.5px; margin-top:2px; letter-spacing:-.2px; }}
@@ -215,17 +215,17 @@ html,body {{ width:{SIZE}px; height:{SIZE}px; overflow:hidden; background:#f8f4e
   letter-spacing:.6px; padding:2px 5px; border:1.5px solid #fff; box-shadow:0 1px 2px rgba(0,0,0,.35); }}
 .lead .chip {{ font-size:15px; padding:3px 8px; right:7px; bottom:7px; }}
 .bottom {{ display:flex; gap:14px; margin:7px 14px 0; border-top:2px solid #141414; padding-top:5px; }}
-.mapbox {{ width:288px; flex:none; }}
+.mapbox {{ width:330px; flex:none; }}
 .mapbox h4, .briefs h4 {{ font:bold 9.5px Arial, sans-serif; letter-spacing:1.5px; margin-bottom:4px; }}
-.map {{ width:288px; height:96px; display:block; }}
-.legend {{ display:flex; flex-wrap:wrap; gap:2px 7px; margin-top:4px; font:8px Arial, sans-serif; color:#333; white-space:nowrap; }}
+.map {{ width:330px; height:110px; display:block; }}
+.legend {{ display:flex; flex-wrap:nowrap; gap:7px; margin-top:4px; font:8px Arial, sans-serif; color:#333; white-space:nowrap; }}
 .legend i {{ width:7px; height:7px; display:inline-block; margin-right:2px; vertical-align:-1px; }}
 .briefs {{ flex:1; }}
-.briefs ul {{ list-style:none; columns:3; column-gap:10px; }}
-.briefs li {{ font:8.6px/10.25px Arial, sans-serif; color:#222; break-inside:avoid; padding-left:16px;
+.briefs ul {{ list-style:none; columns:2; column-gap:14px; }}
+.briefs li {{ font:9.6px/11.1px Arial, sans-serif; color:#222; break-inside:avoid; padding-left:16px;
   text-indent:-16px; }}
 .briefs li em {{ font-style:normal; font-weight:bold; display:inline-block; width:16px; text-indent:0; }}
-.briefs li b {{ font-size:7.4px; letter-spacing:.5px; color:#141414; }}
+.briefs li b {{ font-size:8.4px; letter-spacing:.5px; color:#141414; }}
 .check {{ margin:4px 14px 0; border:1.5px solid #b3261e; background:#fbeee8; padding:3px 8px;
   font:9.6px/12.5px Arial, sans-serif; color:#3a2a26; }}
 .check b {{ color:#b3261e; letter-spacing:1px; margin-right:6px; }}
