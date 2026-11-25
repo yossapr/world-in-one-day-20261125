@@ -414,6 +414,229 @@ def ebola():
 </svg>"""
 
 
-ART = dict(launch=launch, markets=markets, hormuz=hormuz, court=court, drones=drones,
+def court_lead():
+    """A federal courthouse in Brooklyn: columns, a gavel and the 10-of-12 tally."""
+    cols = "".join(f'<rect x="{78 + i * 30}" y="52" width="12" height="62" fill="#ece7db"/>' for i in range(6))
+    marks = "".join(
+        f'<rect x="{18 + (i % 6) * 13}" y="{40 + (i // 6) * 18}" width="10" height="13" rx="1.5" '
+        f'fill="{"#b3261e" if i < 10 else "#9aa6b2"}"/>' for i in range(12))
+    return f"""
+<svg viewBox="0 0 320 150" preserveAspectRatio="xMidYMid slice">
+ <defs><linearGradient id="skyC" x1="0" y1="0" x2="0" y2="1">
+  <stop offset="0" stop-color="#9fb7cc"/><stop offset="1" stop-color="#dfe7ee"/></linearGradient></defs>
+ <rect width="320" height="150" fill="url(#skyC)"/>
+ <g transform="translate(52,14) scale(0.84)">
+ <path d="M66 52 L160 20 L254 52Z" fill="#f4f0e6" stroke="#b9b2a2"/>
+ <rect x="68" y="49" width="184" height="5" fill="#cfc7b5"/>
+ {cols}
+ <rect x="62" y="114" width="196" height="8" fill="#cfc7b5"/><rect x="54" y="122" width="212" height="28" fill="#bdb5a3"/>
+ <text x="160" y="45" font-size="8.5" fill="#6b6556" text-anchor="middle" font-family="Georgia" letter-spacing="2">U.S. COURT · BROOKLYN</text>
+ </g>
+ <rect x="10" y="22" width="92" height="76" rx="3" fill="#1d2633" opacity="0.92"/>
+ <text x="56" y="34" font-size="7.5" fill="#f2f2f2" text-anchor="middle" font-family="Arial" font-weight="bold">COUNTS: 10 GUILTY</text>
+ {marks}
+ <text x="56" y="91" font-size="6.5" fill="#c9d3dd" text-anchor="middle" font-family="Arial">2 ACQUITTED</text>
+ <g transform="translate(292,74) rotate(-24) scale(0.85)">
+  <rect x="-5" y="0" width="10" height="50" rx="3" fill="#7a4b2a"/>
+  <rect x="-20" y="-14" width="40" height="17" rx="4" fill="#5e3820"/>
+ </g>
+ <rect x="266" y="124" width="48" height="7" rx="2" fill="#5e3820"/>
+</svg>"""
+
+
+def pif_tower():
+    """Riyadh at dusk: the PIF tower hit, smoke and broken glass, a drone overhead."""
+    city = "".join(f'<rect x="{x}" y="{y}" width="{w}" height="{150 - y}" fill="#3a3346"/>'
+                   for x, y, w in [(8, 100, 26), (40, 88, 20), (66, 108, 30), (198, 96, 24), (228, 84, 18),
+                                   (252, 104, 30), (288, 92, 26)])
+    wins = "".join(f'<rect x="{151 + (i % 3) * 7}" y="{44 + (i // 3) * 9}" width="4" height="5" fill="#ffd98a" opacity="0.7"/>'
+                   for i in range(30))
+    return f"""
+<svg viewBox="0 0 320 150" preserveAspectRatio="xMidYMid slice">
+ <defs><linearGradient id="skyR" x1="0" y1="0" x2="0" y2="1">
+  <stop offset="0" stop-color="#2b2f55"/><stop offset="0.7" stop-color="#c46a4a"/><stop offset="1" stop-color="#e9a35c"/></linearGradient></defs>
+ <rect width="320" height="150" fill="url(#skyR)"/>
+ {city}
+ <path d="M140 150 L144 36 L162 18 L180 36 L184 150Z" fill="#4c5a74"/>
+ <path d="M162 18 L162 150" stroke="#6d7c98" stroke-width="1"/>
+ {wins}
+ <path d="M144 62 L184 62 L184 80 L144 80Z" fill="#1c1c22"/>
+ <path d="M150 64 C140 50 160 44 152 30 C170 40 172 54 166 64Z" fill="#ff8a1f"/>
+ <path d="M172 62 C168 40 196 30 186 6 C214 22 206 46 190 62Z" fill="#2a2a30" opacity="0.8"/>
+ <g transform="translate(240,30)" fill="#111">
+  <path d="M-12 0 L12 0 L0 -5Z"/><path d="M-4 0 L-14 7 L-9 0Z M4 0 L14 7 L9 0Z"/>
+ </g>
+ <path d="M228 34 Q206 42 186 60" stroke="#ffe08a" stroke-width="1.2" fill="none" stroke-dasharray="2 2"/>
+ <text x="10" y="24" font-size="8.5" fill="#fff" font-family="Arial" font-weight="bold">RIYADH · PIF TOWER</text>
+ <text x="10" y="35" font-size="7" fill="#ffe2c4" font-family="Arial">11 HURT · 2ND STRIKE IN A WEEK</text>
+</svg>"""
+
+
+def markets_up():
+    """A trading board in Taipei: rising green lines and the day's gains."""
+    pts = []
+    rnd = random.Random(9)
+    y = 118.0
+    for i in range(0, 41):
+        x = 14 + i * 5.2
+        drift = -0.3 if i < 6 else -2.3 if i < 28 else -0.5
+        y += drift + rnd.uniform(-2.0, 2.2)
+        pts.append(f"{x:.1f},{y:.1f}")
+    line = " ".join(pts)
+    area = f"14,128 {line} {14 + 40 * 5.2:.1f},128"
+    rows = [("TAIEX", "+9.0%"), ("KOSPI", "+7.0%"), ("NIKKEI", "+3.9%"), ("TSMC", "+9.9%"),
+            ("HYNIX", "+8.6%"), ("SAMSUNG", "+7.5%")]
+    board = []
+    for i, (k, v) in enumerate(rows):
+        yy = 30 + i * 17
+        board.append(f'<text x="226" y="{yy}" font-size="7.5" fill="#cfd8e3" font-family="Arial" font-weight="bold">{k}</text>'
+                     f'<text x="312" y="{yy}" font-size="9" fill="#3ddc84" font-family="Arial" font-weight="bold" text-anchor="end">▲{v}</text>')
+    return f"""
+<svg viewBox="0 0 320 150" preserveAspectRatio="xMidYMid slice">
+ <rect width="320" height="150" fill="#0f1722"/>
+ <g stroke="#1f2b3b" stroke-width="1">
+  <path d="M14 38 H216 M14 60 H216 M14 82 H216 M14 104 H216 M14 126 H216"/>
+  <path d="M50 20 V128 M92 20 V128 M134 20 V128 M176 20 V128"/>
+ </g>
+ <polygon points="{area}" fill="#2ecc71" opacity="0.16"/>
+ <polyline points="{line}" fill="none" stroke="#3ddc84" stroke-width="2.4" stroke-linejoin="round"/>
+ <circle cx="{14 + 40 * 5.2:.1f}" cy="{y:.1f}" r="3.2" fill="#3ddc84"/>
+ <rect x="220" y="14" width="96" height="112" rx="3" fill="#162233" stroke="#26384f"/>
+ {''.join(board)}
+ <text x="14" y="24" font-size="8" fill="#8da2bb" font-family="Arial" font-weight="bold">ASIA CLOSE · TUE 24 NOV</text>
+</svg>"""
+
+
+def probe():
+    """A party headquarters under a magnifying glass: the Politburo probe."""
+    return """
+<svg viewBox="0 0 240 84" preserveAspectRatio="xMidYMid slice">
+ <rect width="240" height="84" fill="#f1e2c6"/>
+ <rect y="62" width="240" height="22" fill="#cdb48a"/>
+ <path d="M30 34 L120 16 L210 34Z" fill="#b3261e"/>
+ <rect x="38" y="34" width="164" height="28" fill="#e9dcc0" stroke="#b9a37a"/>
+ <g fill="#b9a37a">""" + "".join(f'<rect x="{46 + i * 20}" y="38" width="7" height="24"/>' for i in range(8)) + """</g>
+ <circle cx="120" cy="25" r="5" fill="#f2c418"/>
+ <g transform="translate(176,44)">
+  <circle r="17" fill="#ffffff" fill-opacity="0.35" stroke="#2a2a2a" stroke-width="4"/>
+  <path d="M12 12 L26 26" stroke="#2a2a2a" stroke-width="6" stroke-linecap="round"/>
+ </g>
+ <text x="10" y="20" font-size="7" fill="#7a1a14" font-family="Arial" font-weight="bold">4TH POLITBURO PROBE</text>
+</svg>"""
+
+
+def trophy():
+    """The Africa Cup of Nations trophy handed back to Senegal."""
+    return """
+<svg viewBox="0 0 240 84" preserveAspectRatio="xMidYMid slice">
+ <rect width="240" height="84" fill="#1f7a3f"/>
+ <rect x="0" y="0" width="80" height="84" fill="#17703a"/><rect x="160" y="0" width="80" height="84" fill="#17703a"/>
+ <rect x="0" y="0" width="240" height="84" fill="none"/>
+ <g transform="translate(120,14)">
+  <path d="M-18 0 H18 C18 22 8 32 0 34 C-8 32 -18 22 -18 0Z" fill="#f2c418" stroke="#b8860b"/>
+  <path d="M-18 4 C-30 4 -30 18 -14 20 M18 4 C30 4 30 18 14 20" stroke="#f2c418" stroke-width="3" fill="none"/>
+  <rect x="-4" y="34" width="8" height="10" fill="#d4a017"/><rect x="-14" y="44" width="28" height="8" fill="#6b4a2a"/>
+ </g>
+ <g transform="translate(18,20)"><rect width="30" height="20" fill="#00853f"/><rect x="10" width="10" height="20" fill="#fdef42"/>
+  <rect x="20" width="10" height="20" fill="#e31b23"/><circle cx="15" cy="10" r="2.6" fill="#00853f"/></g>
+ <text x="196" y="30" font-size="9" fill="#fff" text-anchor="middle" font-family="Arial" font-weight="bold">CAS</text>
+ <text x="196" y="42" font-size="7" fill="#d6f0dd" text-anchor="middle" font-family="Arial">RULING</text>
+ <text x="120" y="76" font-size="7" fill="#fff" text-anchor="middle" font-family="Arial" font-weight="bold">AFCON 2025</text>
+</svg>"""
+
+
+def scoreline():
+    """A floodlit pitch and the 5-1 scoreboard at the Bernabeu."""
+    return """
+<svg viewBox="0 0 240 84" preserveAspectRatio="xMidYMid slice">
+ <rect width="240" height="84" fill="#10213a"/>
+ <path d="M0 50 L240 50 L240 84 L0 84Z" fill="#2e8b3e"/>
+ <path d="M0 50 L240 50" stroke="#fff" stroke-width="1"/><path d="M120 50 V84" stroke="#fff" stroke-width="0.8"/>
+ <ellipse cx="120" cy="68" rx="18" ry="6" fill="none" stroke="#fff" stroke-width="0.8"/>
+ <g fill="#fff8d0"><circle cx="20" cy="14" r="4"/><circle cx="220" cy="14" r="4"/></g>
+ <path d="M20 18 L10 50 M220 18 L230 50" stroke="#fff8d0" stroke-width="0.6" opacity="0.4"/>
+ <rect x="64" y="16" width="112" height="28" rx="3" fill="#0b0b0f" stroke="#444"/>
+ <text x="84" y="35" font-size="8" fill="#fff" text-anchor="middle" font-family="Arial" font-weight="bold">RMA</text>
+ <text x="120" y="37" font-size="15" fill="#ffd34d" text-anchor="middle" font-family="Arial" font-weight="bold">5-1</text>
+ <text x="156" y="35" font-size="8" fill="#fff" text-anchor="middle" font-family="Arial" font-weight="bold">PSV</text>
+ <circle cx="196" cy="70" r="5" fill="#fff" stroke="#222" stroke-width="0.8"/>
+</svg>"""
+
+
+def debt():
+    """Venezuela's debt stacked into bars: defaulted bonds, PDVSA and arbitration."""
+    parts = [("BONDS", 110, "#b3261e"), ("PDVSA ETC", 67.3, "#d4881c"), ("ARBITRATION", 26, "#7b4a9e")]
+    bars, x = [], 70
+    for name, v, col in parts:
+        w = v / 237.5 * 150
+        bars.append(f'<rect x="{x:.1f}" y="40" width="{w:.1f}" height="20" fill="{col}"/>'
+                    f'<text x="{x + 3:.1f}" y="70" font-size="6" fill="#3a2a26" font-family="Arial">{name}</text>')
+        x += w
+    return f"""
+<svg viewBox="0 0 240 84" preserveAspectRatio="xMidYMid slice">
+ <rect width="240" height="84" fill="#f6efe0"/>
+ <g transform="translate(14,30)"><rect width="42" height="28" fill="#f4c400"/><rect y="9" width="42" height="10" fill="#0033a0"/>
+  <rect y="19" width="42" height="9" fill="#cf142b"/></g>
+ <text x="70" y="30" font-size="13" fill="#141414" font-family="Georgia" font-weight="bold">$237.5bn</text>
+ {''.join(bars)}
+</svg>"""
+
+
+def pharma():
+    """A capsule and a deal tag: Sanofi agrees to buy Insmed."""
+    return """
+<svg viewBox="0 0 240 84" preserveAspectRatio="xMidYMid slice">
+ <rect width="240" height="84" fill="#ece6f4"/>
+ <g transform="translate(70,44) rotate(-30)">
+  <rect x="-40" y="-14" width="80" height="28" rx="14" fill="#7b4a9e"/>
+  <path d="M0 -14 H26 A14 14 0 0 1 26 14 H0Z" fill="#f4f1f8"/>
+  <rect x="-40" y="-14" width="80" height="28" rx="14" fill="none" stroke="#4b2a66" stroke-width="1.5"/>
+ </g>
+ <path d="M126 40 h22 M140 32 l10 8 -10 8" stroke="#4b2a66" stroke-width="3" fill="none"/>
+ <rect x="158" y="26" width="70" height="28" rx="4" fill="#fff" stroke="#7b4a9e"/>
+ <text x="193" y="38" font-size="7" fill="#4b2a66" text-anchor="middle" font-family="Arial" font-weight="bold">SANOFI → INSMED</text>
+ <text x="193" y="49" font-size="7" fill="#555" text-anchor="middle" font-family="Arial">$175 A SHARE</text>
+</svg>"""
+
+
+def ariane():
+    """A heavy launcher on the pad at Kourou with a satellite stack above."""
+    return """
+<svg viewBox="0 0 240 84" preserveAspectRatio="xMidYMid slice">
+ <rect width="240" height="84" fill="#16233f"/>
+ <g fill="#fff" opacity="0.7"><circle cx="20" cy="18" r="0.8"/><circle cx="60" cy="12" r="0.7"/><circle cx="200" cy="20" r="0.9"/><circle cx="170" cy="10" r="0.7"/><circle cx="222" cy="40" r="0.6"/></g>
+ <path d="M0 70 H240 V84 H0Z" fill="#2c5a3a"/>
+ <g transform="translate(120,0)">
+  <path d="M-6 16 L0 6 L6 16Z" fill="#e8e8e8"/>
+  <rect x="-6" y="16" width="12" height="46" fill="#f4f4f4" stroke="#bbb" stroke-width="0.5"/>
+  <rect x="-15" y="34" width="6" height="30" rx="2" fill="#dcdcdc"/><rect x="9" y="34" width="6" height="30" rx="2" fill="#dcdcdc"/>
+  <rect x="-21" y="38" width="5" height="26" rx="2" fill="#cfcfcf"/><rect x="16" y="38" width="5" height="26" rx="2" fill="#cfcfcf"/>
+  <path d="M-5 62 L0 76 L5 62Z M-14 64 L-12 74 L-10 64Z M10 64 L12 74 L14 64Z" fill="#ffcf5a"/>
+ </g>
+ <text x="10" y="22" font-size="7" fill="#c9d6f2" font-family="Arial" font-weight="bold">KOUROU · ARIANE 6</text>
+</svg>"""
+
+
+def tube():
+    """A London Underground train standing at an empty platform, a closed sign."""
+    return """
+<svg viewBox="0 0 240 84" preserveAspectRatio="xMidYMid slice">
+ <rect width="240" height="84" fill="#e9e4da"/>
+ <path d="M0 0 H240 V30 Q120 4 0 30Z" fill="#cfc6b2"/>
+ <rect y="58" width="240" height="26" fill="#8a8170"/>
+ <rect x="10" y="30" width="170" height="28" rx="8" fill="#e8e8e8" stroke="#555"/>
+ <rect x="10" y="44" width="170" height="5" fill="#d62828"/>
+ <g fill="#5a86a8">""" + "".join(f'<rect x="{20 + i * 26}" y="34" width="16" height="9" rx="2"/>' for i in range(6)) + """</g>
+ <g transform="translate(206,36)">
+  <circle r="16" fill="none" stroke="#d62828" stroke-width="5"/><rect x="-20" y="-4" width="40" height="8" fill="#1d3b8a"/>
+  <text y="3" font-size="5.5" fill="#fff" text-anchor="middle" font-family="Arial" font-weight="bold">CLOSED</text>
+ </g>
+ <text x="10" y="22" font-size="7" fill="#3a3a3a" font-family="Arial" font-weight="bold">CIRCLE \u00b7 PICCADILLY</text>
+</svg>"""
+
+
+ART = dict(launch=launch, tube=tube, markets=markets, hormuz=hormuz, court=court, drones=drones,
+           court_lead=court_lead, pharma=pharma, ariane=ariane, pif_tower=pif_tower, markets_up=markets_up, probe=probe,
+           trophy=trophy, scoreline=scoreline, debt=debt,
            mine=mine, garment=garment, treaty=signing, refinery=refinery, sudan=sudan, cuba=cuba,
            femicide=femicide, ebola=ebola)

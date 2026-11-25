@@ -90,6 +90,12 @@ def sure_html(label):
     return f'<span class="sure" style="color:{col};border-color:{col}">{esc(label)}</span>'
 
 
+def chip_html(s):
+    if not s.get("chip"):
+        return ""
+    return f'<span class="chip">{esc(s["chip"])}</span>'
+
+
 def timeline_html():
     items = "".join(f'<span class="ev"><b>{esc(t)}</b> {esc(x)}</span>' for t, x in ed.TIMELINE)
     return f'<div class="timeline"><span class="tl">THE DAY IN UTC</span>{items}</div>'
@@ -99,7 +105,7 @@ def lead_html(i, s):
     c = region_color(s["region"])
     return f"""
 <article class="lead">
-  <div class="scene">{art.ART[s['art']]()}<span class="num" style="background:{c}">{i}</span></div>
+  <div class="scene">{art.ART[s['art']]()}<span class="num" style="background:{c}">{i}</span>{chip_html(s)}</div>
   <div class="meta"><span class="tag" style="background:{c}">{esc(s['tag'])}</span>
     <span class="where">{esc(s['place'])} \u00b7 {esc(s['beat'])}</span>{sure_html(s['sure'])}</div>
   <h2>{esc(s['head'])}</h2>
@@ -112,7 +118,7 @@ def card_html(i, s):
     c = region_color(s["region"])
     return f"""
 <article class="card">
-  <div class="scene">{art.ART[s['art']]()}<span class="num" style="background:{c}">{i}</span></div>
+  <div class="scene">{art.ART[s['art']]()}<span class="num" style="background:{c}">{i}</span>{chip_html(s)}</div>
   <div class="where"><i style="background:{c}"></i>{esc(s['place'])}{sure_html(s['sure'])}</div>
   <h3>{esc(s['head'])}</h3>
   <p>{esc(s['dek'])}</p>
@@ -150,6 +156,7 @@ def page(land_d):
         for n, p, t, r in ed.BRIEFS)
     sure_legend = " ".join(f'<i style="color:{c};border-color:{c}">{esc(k)}</i> {esc(m)}' for k, (c, m) in ed.SURE.items())
     legend = "".join(f'<span><i style="background:{c}"></i>{esc(n)}</span>' for n, c in ed.REGIONS.values())
+    subline = " <b>◆</b> ".join(esc(x) for x in ed.SUBLINE)
     return f"""<!doctype html><html><head><meta charset="utf-8"><style>
 * {{ box-sizing:border-box; margin:0; padding:0; }}
 html,body {{ width:{SIZE}px; height:{SIZE}px; overflow:hidden; background:#f8f4ea; color:#141414;
@@ -195,12 +202,15 @@ html,body {{ width:{SIZE}px; height:{SIZE}px; overflow:hidden; background:#f8f4e
   padding:2px 6px; margin-right:6px; }}
 .timeline .ev {{ flex:1; white-space:nowrap; border-left:2px solid #b3261e; padding-left:5px; }}
 .timeline .ev b {{ color:#b3261e; }}
-.cards {{ display:grid; grid-template-columns:repeat(4,1fr); gap:7px 14px; margin:5px 14px 0; }}
+.cards {{ display:grid; grid-template-columns:repeat(5,1fr); gap:7px 11px; margin:5px 14px 0; }}
 .card .scene {{ height:66px; }}
 .card .where {{ margin-top:4px; display:flex; align-items:center; gap:4px; font-size:8px; overflow:visible; }}
 .card .where i {{ width:7px; height:7px; display:inline-block; }}
-.card h3 {{ font-size:16px; line-height:18px; margin-top:2px; letter-spacing:-.2px; }}
-.card p {{ font:10.5px/13px Arial, sans-serif; color:#333; margin-top:2px; }}
+.card h3 {{ font-size:14.5px; line-height:16.5px; margin-top:2px; letter-spacing:-.2px; }}
+.card p {{ font:10px/12.5px Arial, sans-serif; color:#333; margin-top:2px; }}
+.chip {{ position:absolute; right:5px; bottom:5px; background:#b3261e; color:#fff; font:bold 10px Arial, sans-serif;
+  letter-spacing:.6px; padding:2px 5px; border:1.5px solid #fff; box-shadow:0 1px 2px rgba(0,0,0,.35); }}
+.lead .chip {{ font-size:15px; padding:3px 8px; right:7px; bottom:7px; }}
 .bottom {{ display:flex; gap:14px; margin:7px 14px 0; border-top:2px solid #141414; padding-top:5px; }}
 .mapbox {{ width:330px; flex:none; }}
 .mapbox h4, .briefs h4 {{ font:bold 9.5px Arial, sans-serif; letter-spacing:1.5px; margin-bottom:4px; }}
@@ -221,18 +231,18 @@ html,body {{ width:{SIZE}px; height:{SIZE}px; overflow:hidden; background:#f8f4e
 .foot .bar {{ margin-top:3px; background:#141414; color:#f8f4ea; font:bold 8.5px Arial, sans-serif;
   letter-spacing:1.4px; padding:2px 0; text-align:center; margin-left:-14px; margin-right:-14px; }}
 </style></head><body>
-<div class="top"><span>THE WORLD IN ONE DAY</span><span class="r">{total} STORIES \u00b7 ALL FROM WEDNESDAY 25 NOVEMBER 2026</span></div>
+<div class="top"><span>THE WORLD IN ONE DAY</span><span class="r">{total} STORIES \u00b7 ALL FROM {esc(ed.DAY.upper())}</span></div>
 <header class="mast"><h1>{esc(ed.DAY)}</h1>
-<div class="sub">Pakistan's first astronaut flies to Tiangong <b>\u25c6</b> Asia's chip stocks crash <b>\u25c6</b> Tankers burn in Hormuz</div></header>
+<div class="sub">{subline}</div></header>
 <div class="strip">{strip}</div>
 {timeline_html()}
 <div class="kpis">{kpis}</div>
 <section class="leads">{leads}</section>
-<div class="rule"><span>ALSO ON WEDNESDAY 25 NOVEMBER</span><span class="how">HOW SURE: {sure_legend}</span></div>
+<div class="rule"><span>ALSO ON {esc(ed.DAY_TAG)}</span><span class="how">HOW SURE: {sure_legend}</span></div>
 <section class="cards">{cards}</section>
 <section class="bottom">
  <div class="mapbox"><h4>WHERE IT HAPPENED \u00b7 PINS = STORY NUMBERS</h4>{map_svg(land_d)}<div class="legend">{legend}</div></div>
- <div class="briefs"><h4>IN BRIEF \u00b7 {len(ed.BRIEFS)} MORE FROM 25 NOVEMBER</h4><ul>{briefs}</ul></div>
+ <div class="briefs"><h4>IN BRIEF \u00b7 {len(ed.BRIEFS)} MORE FROM {esc(ed.DAY_TAG_SHORT)}</h4><ul>{briefs}</ul></div>
 </section>
 <div class="check"><b>DATE CHECK</b>{esc(ed.DATE_CHECK)}</div>
 <div class="foot">{esc(ed.SOURCES)}<div class="bar">DRAWN BY AN AI AGENT FOR MAKE.FUN \u00b7 {esc(ed.DAY.upper())} \u00b7 ONE DAY, ONE PAGE</div></div>
