@@ -222,7 +222,7 @@ def mine():
  <g transform="translate(150,22)"><circle r="4" fill="#ffcf3a"/><rect x="-3" y="4" width="6" height="9" fill="#ff7a1a"/></g>
  <g transform="translate(110,18)"><circle r="3.5" fill="#ffcf3a"/><rect x="-3" y="3.5" width="6" height="8" fill="#ff7a1a"/></g>
  <path d="M200 0 Q206 30 196 60" stroke="#6c8ea8" stroke-width="5" fill="none" opacity="0.8"/>
- <text x="30" y="68" font-size="7" fill="#fff" font-family="Arial" font-weight="bold">100 M DEEP</text>
+ <text x="120" y="16" text-anchor="middle" font-size="7" fill="#fff" font-family="Arial" font-weight="bold">100 M DEEP</text>
 </svg>"""
 
 
@@ -635,7 +635,109 @@ def tube():
 </svg>"""
 
 
-ART = dict(launch=launch, tube=tube, markets=markets, hormuz=hormuz, court=court, drones=drones,
+def tariffs():
+    """A container ship heading for port, its boxes stamped with the proposed rates."""
+    boxes = [("CHINA", "20%", "#b3261e"), ("VIETNAM", "35%", "#d4881c"), ("INDIA", "25%", "#2e7d4f"),
+             ("EU", "15%", "#1f5f8b"), ("+10 MORE", "", "#5b5b5b")]
+    row = "".join(
+        f'<g transform="translate({28 + i * 44},62)"><rect width="42" height="26" fill="{c}" stroke="#f8f4ea" stroke-width="1"/>'
+        f'<text x="21" y="{11 if r else 16}" font-size="7" fill="#fff" text-anchor="middle" font-family="Arial" '
+        f'font-weight="bold">{n}</text>'
+        + (f'<text x="21" y="22" font-size="9.5" fill="#fff" text-anchor="middle" font-family="Arial" '
+           f'font-weight="bold">{r}</text>' if r else "") + '</g>'
+        for i, (n, r, c) in enumerate(boxes))
+    low = "".join(f'<rect x="{28 + i * 22}" y="89" width="21" height="10" fill="{c}" opacity="0.85"/>'
+                  for i, c in enumerate(["#6b7f94", "#a0522d", "#7b8a5a", "#8b6c9e", "#4f7a8a",
+                                         "#b07a3a", "#6b7f94", "#a0522d", "#7b8a5a", "#4f7a8a"]))
+    return f"""
+<svg viewBox="0 0 320 150" preserveAspectRatio="xMidYMid slice">
+ <rect width="320" height="150" fill="#cfe0ec"/>
+ <rect y="104" width="320" height="46" fill="#3f6f93"/>
+ <path d="M0 116 q10 -3 20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0"
+       stroke="#8fb6d3" stroke-width="1" fill="none"/>
+ <g fill="#9aa9b6"><rect x="262" y="58" width="6" height="48"/><rect x="246" y="56" width="56" height="5"/>
+  <path d="M248 61 L262 76 M300 61 L268 80" stroke="#9aa9b6" stroke-width="2"/></g>
+ <rect x="280" y="92" width="40" height="14" fill="#8a8f96"/>
+ <path d="M14 99 L262 99 L248 122 L26 122Z" fill="#23384d"/>
+ <rect x="14" y="99" width="248" height="4" fill="#b3261e"/>
+ {low}
+ {row}
+ <rect x="244" y="70" width="16" height="29" fill="#f1ede4"/><rect x="246" y="74" width="12" height="4" fill="#3a4a5c"/>
+ <rect x="14" y="12" width="122" height="34" rx="3" fill="#141414"/>
+ <text x="22" y="26" font-size="9" fill="#ffcf5a" font-family="Arial" font-weight="bold" letter-spacing="1">USTR · SECTION 301</text>
+ <text x="22" y="39" font-size="8" fill="#fff" font-family="Arial">“excess capacity” tariffs</text>
+</svg>"""
+
+
+def gizafire():
+    """A fuel truck on its side on a city road at night, burning."""
+    return """
+<svg viewBox="0 0 240 84" preserveAspectRatio="xMidYMid slice">
+ <rect width="240" height="84" fill="#1d1a24"/>
+ <g fill="#2c2833"><rect x="0" y="22" width="34" height="44"/><rect x="38" y="30" width="26" height="36"/>
+  <rect x="184" y="26" width="30" height="40"/><rect x="216" y="18" width="24" height="48"/></g>
+ <g fill="#e0b860" opacity="0.7"><rect x="6" y="28" width="4" height="4"/><rect x="20" y="40" width="4" height="4"/>
+  <rect x="192" y="34" width="4" height="4"/><rect x="224" y="26" width="4" height="4"/></g>
+ <rect y="64" width="240" height="20" fill="#3a3a40"/>
+ <path d="M0 74 H240" stroke="#d9c77a" stroke-width="1" stroke-dasharray="8 6"/>
+ <ellipse cx="118" cy="52" rx="64" ry="30" fill="#ff8a1f" opacity="0.28"/>
+ <path d="M96 40 C80 10 120 4 104 -10 C140 0 150 22 136 40Z" fill="#45414a" opacity="0.85"/>
+ <g transform="translate(84,48) rotate(-8)">
+  <rect width="62" height="18" rx="9" fill="#c9c4b8"/><rect x="62" y="2" width="18" height="16" rx="2" fill="#a33a2a"/>
+  <circle cx="14" cy="20" r="4" fill="#141414"/><circle cx="48" cy="20" r="4" fill="#141414"/><circle cx="72" cy="20" r="4" fill="#141414"/>
+ </g>
+ <path d="M86 50 C78 30 98 26 92 10 C112 22 116 36 110 50Z" fill="#ff7a1a"/>
+ <path d="M106 48 C102 30 124 24 118 6 C140 22 142 38 134 48Z" fill="#ff7a1a"/>
+ <path d="M94 50 C92 40 102 36 100 26 C110 34 110 42 106 50Z" fill="#ffd34d"/>
+ <path d="M114 48 C112 36 124 32 122 20 C132 30 132 40 128 48Z" fill="#ffd34d"/>
+ <text x="8" y="14" font-size="7" fill="#f0c9a8" font-family="Arial" font-weight="bold">AL-WARAQ, GIZA</text>
+</svg>"""
+
+
+def power():
+    """The occupied nuclear plant on diesel, a dead power line and a dark city."""
+    wins = "".join(f'<rect x="{x}" y="{y}" width="3" height="3" fill="#3a3f52"/>'
+                   for x, y in [(150, 40), (158, 50), (184, 36), (192, 48), (214, 42), (222, 54)])
+    return f"""
+<svg viewBox="0 0 240 84" preserveAspectRatio="xMidYMid slice">
+ <rect width="240" height="84" fill="#141a2b"/>
+ <g fill="#232a3d"><rect x="144" y="34" width="26" height="50"/><rect x="176" y="28" width="28" height="56"/>
+  <rect x="208" y="36" width="24" height="48"/></g>
+ {wins}
+ <g fill="#4a5168"><path d="M10 84 Q15 56 10 34 H36 Q31 56 36 84Z"/><path d="M42 84 Q47 60 42 40 H66 Q61 60 66 84Z"/></g>
+ <rect x="14" y="20" width="48" height="11" fill="#ffcf5a"/>
+ <text x="38" y="28.5" font-size="7" fill="#141414" text-anchor="middle" font-family="Arial" font-weight="bold">DIESEL</text>
+ <g stroke="#7d8597" stroke-width="1.6" fill="none">
+  <path d="M92 84 L102 24 L112 84 M95 66 H109 M98 46 H106 M92 30 H112"/>
+ </g>
+ <path d="M92 30 Q80 36 70 32" stroke="#7d8597" stroke-width="0.9" fill="none"/>
+ <path d="M112 30 Q124 36 130 46" stroke="#7d8597" stroke-width="0.9" fill="none"/>
+ <path d="M130 46 l3 -4 l1 5 l3 -4" stroke="#ffd34d" stroke-width="1.2" fill="none"/>
+ <text x="232" y="16" font-size="7" fill="#c9d6f2" font-family="Arial" font-weight="bold" text-anchor="end">ZAPORIZHZHIA PLANT</text>
+ <text x="232" y="25" font-size="6.5" fill="#8f9bbb" font-family="Arial" text-anchor="end">17th power loss this year</text>
+</svg>"""
+
+
+def ucl():
+    """A floodlit pitch and the scoreboard of the night's upset in Lille."""
+    return """
+<svg viewBox="0 0 240 84" preserveAspectRatio="xMidYMid slice">
+ <rect width="240" height="84" fill="#10213a"/>
+ <path d="M0 50 L240 50 L240 84 L0 84Z" fill="#2e8b3e"/>
+ <path d="M0 50 L240 50" stroke="#fff" stroke-width="1"/><path d="M120 50 V84" stroke="#fff" stroke-width="0.8"/>
+ <ellipse cx="120" cy="68" rx="18" ry="6" fill="none" stroke="#fff" stroke-width="0.8"/>
+ <g fill="#fff8d0"><circle cx="20" cy="14" r="4"/><circle cx="220" cy="14" r="4"/></g>
+ <path d="M20 18 L10 50 M220 18 L230 50" stroke="#fff8d0" stroke-width="0.6" opacity="0.4"/>
+ <rect x="64" y="12" width="112" height="32" rx="3" fill="#0b0b0f" stroke="#444"/>
+ <text x="86" y="33" font-size="8" fill="#fff" text-anchor="middle" font-family="Arial" font-weight="bold">LILLE</text>
+ <text x="120" y="35" font-size="15" fill="#ffd34d" text-anchor="middle" font-family="Arial" font-weight="bold">2-1</text>
+ <text x="154" y="33" font-size="8" fill="#fff" text-anchor="middle" font-family="Arial" font-weight="bold">BAYERN</text>
+ <text x="120" y="42" font-size="5" fill="#9fb0c8" text-anchor="middle" font-family="Arial">FULL TIME · MATCHDAY 5</text>
+ <circle cx="196" cy="70" r="5" fill="#fff" stroke="#222" stroke-width="0.8"/>
+</svg>"""
+
+
+ART = dict(launch=launch, tube=tube, tariffs=tariffs, gizafire=gizafire, power=power, ucl=ucl, markets=markets, hormuz=hormuz, court=court, drones=drones,
            court_lead=court_lead, pharma=pharma, ariane=ariane, pif_tower=pif_tower, markets_up=markets_up, probe=probe,
            trophy=trophy, scoreline=scoreline, debt=debt,
            mine=mine, garment=garment, treaty=signing, refinery=refinery, sudan=sudan, cuba=cuba,

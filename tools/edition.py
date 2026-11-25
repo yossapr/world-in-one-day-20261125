@@ -4,14 +4,15 @@ Every story here happened, or was first reported, on 25 November 2026
 (in some time zone), and each carries the outlets that reported it.
 Claims that rest on one side's word are attributed ("IRGC says", "reported"),
 and each drawn story carries how sure the reporting is (SURE below).
+This edition runs to the close of the US day and Wednesday's Champions League.
 """
 
 DAY = "Wednesday 25 November 2026"
 DAY_SHORT = "WED 25 NOV 2026"
 DAY_TAG = "WEDNESDAY 25 NOVEMBER"
 DAY_TAG_SHORT = "25 NOVEMBER"
-SUBLINE = ["Pakistan's first astronaut flies to Tiangong", "Asia's chip stocks crash",
-           "Tankers burn in Hormuz"]
+SUBLINE = ["Pakistan's first astronaut reaches Tiangong", "AI doubts crash Asia's chip stocks",
+           "US proposes tariffs on 14 economies"]
 
 # Region keys and their colours on the map and the region strip.
 REGIONS = {
@@ -35,20 +36,21 @@ SURE = {
 # The day in UTC: only times the reports give.
 TIMELINE = [
     ("00:21", "Shenzhou-24 lifts off"),
-    ("03:56", "Crew docks at Tiangong"),
-    ("05:30", "Taiex closes −4.8%"),
+    ("03:56", "Docks at Tiangong"),
     ("06:30", "Kospi closes −6.2%"),
-    ("10:00", "London Tube strike starts"),
+    ("10:00", "London Tube strike"),
+    ("13:30", "US Q3 growth: 4.3%"),
+    ("21:00", "Dow ends at 50,183"),
 ]
 
 # Big numbers across the top: (figure, caption).
 KPIS = [
-    ("1st", "foreign astronaut to visit China's Tiangong station"),
-    ("−6.2%", "Kospi, as Asia's chip stocks plunge"),
-    ("2", "tankers hit mines in Hormuz, Iran's IRGC says"),
+    ("1st", "foreign astronaut aboard China's Tiangong station"),
+    ("−6.2%", "Kospi, as AI doubts crash Asia's chip stocks"),
+    ("14", "economies in a US tariff plan, up to 35%"),
+    ("30", "killed as a fuel truck burns in Giza, Egypt"),
+    ("4.3%", "US Q3 growth, revised up from 3.4%"),
     ("47,000", "women killed by partner or kin in 2025, UN says"),
-    ("26", "miners trapped in a flooded West Java pit"),
-    ("+36%", "Bangladesh garment minimum wage"),
 ]
 
 # Three lead stories, each with a drawn scene (art key in art.py).
@@ -63,36 +65,44 @@ LEADS = [
     ),
     dict(
         art="markets", tag="SELL-OFF", region="asia", place="SEOUL · TAIPEI · TOKYO",
-        beat="MARKETS", sure="CONFIRMED", chip="KOSPI \u22126.2%",
+        beat="MARKETS", sure="CONFIRMED", chip="KOSPI −6.2%",
         head="Asia's chip stocks crash on AI doubts",
-        dek="Samsung −9.9%, SK Hynix −11.1%: Nvidia CEO Huang's return "
-            "fails to calm markets; Taiex −4.8%.",
-        src="AL JAZEERA · AFP",
+        dek="Samsung −9.9%, SK Hynix −11.1%; in New York the Nasdaq "
+            "fell 4.6% before clawing back to −0.6%.",
+        src="AL JAZEERA · AFP · INVESTINGLIVE",
     ),
     dict(
-        art="hormuz", tag="WAR AT SEA", region="mideast", place="STRAIT OF HORMUZ",
-        beat="IRAN WAR", sure="CLAIM", chip="2 TANKERS ABLAZE",
-        head="Two oil tankers hit mines and burn, Iran says",
-        dek="The IRGC Navy says they took an “unauthorised route” early "
-            "on Wednesday; not independently confirmed.",
-        src="IRIB · AA · ARAB NEWS",
+        art="tariffs", tag="TRADE WAR", region="americas", place="WASHINGTON, US",
+        beat="TRADE", sure="OFFICIAL", chip="14 ECONOMIES",
+        head="US proposes new tariffs on 14 economies",
+        dek="USTR's “excess capacity” plan: 20% more on China, up to 35% "
+            "on Vietnam; hearings in January.",
+        src="USTR · REUTERS · RTÉ · AL JAZEERA",
     ),
 ]
 
-# Eight secondary stories with small drawn scenes.
+# Ten secondary stories with small drawn scenes.
 CARDS = [
     dict(art="treaty", region="oceania", place="CANBERRA, AUSTRALIA", sure="OFFICIAL", chip="TREATY SIGNED",
          head="Australia and Solomons sign security treaty",
-         dek="No foreign bases allowed; more jobs and easier visas for Solomon Islanders.",
-         src="PM.GOV.AU · ABC · NBC"),
+         dek="Honiara must consult Canberra on new security deals; more jobs and visas.",
+         src="PM.GOV.AU · ABC · AL JAZEERA"),
     dict(art="femicide", region="global", place="UNITED NATIONS", sure="OFFICIAL",
          head="UN: five women an hour killed by partner or kin",
          dek="47,000 in 2025, says a brief for the day to end violence against women.",
          src="UNODC · UN WOMEN"),
-    dict(art="court", region="asia", place="SHENZHEN · BEIJING", sure="OFFICIAL", chip="VERDICT REJECTED",
-         head="Huawei rejects US guilty verdict",
-         dek="Convicted in Brooklyn on 10 of 12 counts; Beijing slams US “suppression”.",
-         src="CNBC · TIME"),
+    dict(art="hormuz", region="mideast", place="STRAIT OF HORMUZ", sure="CLAIM", chip="TANKERS ABLAZE",
+         head="Iran says tankers hit mines and burn",
+         dek="IRGC says two took an “unauthorised route”; later a third caught fire.",
+         src="IRIB · AA · AL JAZEERA"),
+    dict(art="gizafire", region="africa", place="GIZA, EGYPT", sure="OFFICIAL", chip="30 DEAD",
+         head="Fuel truck fire kills at least 30",
+         dek="A truck of petroleum flipped in Imbaba; 15 hurt, health ministry says.",
+         src="EGYPT HEALTH MINISTRY · AL JAZEERA"),
+    dict(art="power", region="europe", place="UKRAINE", sure="OFFICIAL", chip="5 REGIONS DARK",
+         head="Russian strikes black out five regions",
+         dek="At least five killed; occupied nuclear plant on diesel generators again.",
+         src="UKRAINE ENERGY MINISTRY · AL JAZEERA"),
     dict(art="drones", region="mideast", place="RAS TANURA, SAUDI ARABIA", sure="OFFICIAL", chip="4 DRONES DOWN",
          head="Saudis down Houthi drones over oil port",
          dek="Four destroyed after coalition strikes on Hodeidah; Houthis threaten Jeddah.",
@@ -105,64 +115,80 @@ CARDS = [
          head="Garment workers win 36% pay rise",
          dek="Minimum wage to rise to 17,500 taka ($136) a month after weeks of protest.",
          src="AL JAZEERA · AFP"),
-    dict(art="refinery", region="europe", place="SAMARA, RUSSIA", sure="REPORTED", chip="2 REFINERIES HIT",
-         head="Ukrainian drones hit two refineries",
-         dek="Fires reported at Syzran and Kuibyshev; Putin had called retaliation “inevitable”.",
-         src="KYIV INDEPENDENT · WORLD"),
-    dict(art="ebola", region="africa", place="ITURI, DR CONGO", sure="OFFICIAL", chip="TEAM MOVED",
-         head="WHO pulls staff out of Ebola zone hospital",
-         dek="Team sheltered 3 days in Akwe amid army–CRP fighting; Mongbwalu team moved.",
-         src="WHO · ARAB NEWS · ANI"),
-    dict(art="sudan", region="africa", place="KHARTOUM, SUDAN", sure="OFFICIAL", chip="OFFER REJECTED",
-         head="Sudan rejects Ethiopia's peace offer",
-         dek="Army-backed government says Addis Ababa is not neutral in the war with the RSF.",
-         src="RADIO TAMAZUJ · NEWS.AZ"),
+    dict(art="ucl", region="europe", place="LILLE, FRANCE", sure="CONFIRMED", chip="UPSET",
+         head="Lille stun Bayern in Champions League",
+         dek="Ueda and an own goal turn it round; Isak scores twice as Liverpool beat Brugge 3-0.",
+         src="UEFA · ESPN"),
     dict(art="tube", region="europe", place="LONDON, UK", sure="OFFICIAL", chip="LINES SHUT",
          head="Tube strike shuts two London lines",
          dek="No Circle or Piccadilly service all day from 10:00, TfL says.",
          src="TFL · LONDON MINUTE"),
 ]
 
-# Map pins: (number, lon, lat, region). Numbers match leads (1-3) and cards (4-11).
+# Map pins: (number, lon, lat, region[, dx, dy]). Numbers match leads (1-3) and cards (4-13).
+# dx/dy nudge a pin (in map pixels) where two places sit too close to read.
 PINS = [
-    (1, 100.3, 40.96, "asia"), (2, 126.98, 37.57, "asia"), (3, 56.3, 26.6, "mideast"),
-    (4, 149.13, -35.28, "oceania"), (5, -73.97, 40.75, "global"), (6, 114.06, 22.54, "asia"),
-    (7, 50.16, 26.64, "mideast"), (8, 106.6, -6.6, "asia"), (9, 90.41, 23.81, "asia"),
-    (10, 48.47, 53.16, "europe"), (11, 30.0, 1.9, "africa"), (12, 32.56, 15.5, "africa"),
-    (13, -0.13, 51.5, "europe"),
+    (1, 100.3, 40.96, "asia"), (2, 126.98, 37.57, "asia"), (3, -77.04, 38.9, "americas", -4, 3),
+    (4, 149.13, -35.28, "oceania"), (5, -73.97, 40.75, "global", 6, -5), (6, 56.3, 26.6, "mideast", 5, 2),
+    (7, 31.2, 30.05, "africa"), (8, 35.1, 47.8, "europe"), (9, 50.16, 26.64, "mideast", -3, -5),
+    (10, 106.6, -6.6, "asia"), (11, 90.41, 23.81, "asia"), (12, 3.06, 50.63, "europe", 5, 4),
+    (13, -0.13, 51.5, "europe", -5, -4),
 ]
 
 # Briefs: (number, place, text, region). Short and attributed.
 BRIEFS = [
     (14, "TOKYO", "Tokyo Electron −12.5%, Advantest −12.9%", "asia"),
     (15, "TAIPEI", "Taiex ends −4.8% after an 8% intraday plunge", "asia"),
-    (16, "HONG KONG", "Hang Seng ends 1.1% lower in a milder slide", "asia"),
-    (17, "KUALA LUMPUR", "Malaysia Airlines' parent orders 10 Boeing 787s", "asia"),
-    (18, "SANAA", "Houthis tell Saudi Red Sea port workers to flee", "mideast"),
-    (19, "TEHRAN", "IRGC chief says forces ready to push “enemy” back", "mideast"),
-    (20, "CANBERRA", "Australia apologises to LGBTQ military veterans", "oceania"),
-    (21, "PERTH", "Deloitte barred from WA work over AI-flawed report", "oceania"),
-    (22, "SUVA", "Fiji drought: 92 communities without water supply", "oceania"),
-    (23, "KYIV", "US rules out troops in post-war guarantees: report", "europe"),
-    (24, "KYIV REGION", "Russian strike kills one, hits delivery depots", "europe"),
-    (25, "ODESA", "Russian strike kills two, including a teenager", "europe"),
-    (26, "BRUSSELS", "EU weighs €50bn fund for AI and quantum firms", "europe"),
-    (27, "BENGHAZI", "Two Libyan soldiers die after Ukraine port attack", "africa"),
-    (28, "HAVANA", "WHO chief urges end to US fuel blockade of Cuba", "americas"),
-    (29, "WASHINGTON", "Trump team shelves business offers to Russia: FT", "americas"),
-    (30, "WASHINGTON", "Hackers breached a CIA–ODNI unclassified system", "americas"),
-    (31, "WASHINGTON", "Tariff rise readied for China, EU and 14 others", "americas"),
-    (32, "JUNEAU", "Alaska ends voter-roll deal with Justice Dept", "americas"),
-    (33, "CARACAS", "Venezuela puts its debt at $237.5bn, 242% of GDP", "americas"),
+    (16, "SHENZHEN", "Huawei rejects its US guilty verdict", "asia"),
+    (17, "MALAYSIA", "Airline group orders 10 Boeing 787s", "asia"),
+    (18, "GAZA", "Israeli strikes kill 11, including two girls", "mideast"),
+    (19, "GAZA", "Strike kills internal security chief and family", "mideast"),
+    (20, "GAZA", "Rains threaten 1,000 shelter sites, councils say", "mideast"),
+    (21, "JERUSALEM", "Judges urge dropping a Netanyahu case", "mideast"),
+    (22, "JERUSALEM", "Eisenkot wins his first coalition partner", "mideast"),
+    (23, "BAGHDAD", "Top court backs Baghdad on Kurdish oil", "mideast"),
+    (24, "SANAA", "Houthis tell Saudi port workers to flee", "mideast"),
+    (25, "TEHRAN", "IRGC: forces ready to push “enemy” back", "mideast"),
+    (26, "KYIV", "US rules out troops in guarantees: report", "europe"),
+    (27, "ODESA", "Russian strike kills two, including a teenager", "europe"),
+    (28, "SAMARA", "Ukrainian drones hit refineries; one dead", "europe"),
+    (29, "BRUSSELS", "EU weighs €50bn AI and quantum fund", "europe"),
+    (30, "LONDON", "Military aircraft moved into hangars", "europe"),
+    (31, "MADRID", "Deported Abrego Garcia arrives in Spain", "europe"),
+    (32, "SPAIN", "Puigdemont to return on 12 December", "europe"),
+    (33, "FRANKFURT", "DAX ends −1.3%; Madrid's IBEX −2.0%", "europe"),
+    (34, "BERN", "Swiss regret North Korea office closure", "europe"),
+    (35, "LISBON", "Sporting 2-2 Man Utd; Fernandes double", "europe"),
+    (36, "UCL", "Inter 2-0 Stuttgart, Barça 4-1 Sabah", "europe"),
+    (37, "UCL", "PSG 2-2 Roma, Atlético 2-0 Viking", "europe"),
+    (38, "CAPE TOWN", "Court lifts Ramaphosa ‘farmgate’ threat", "africa"),
+    (39, "KHARTOUM", "Sudan rejects Ethiopia's peace offer", "africa"),
+    (40, "MAIDUGURI", "Tinubu pledges peace for the northeast", "africa"),
+    (41, "BENGHAZI", "Two soldiers die after Ukraine port attack", "africa"),
+    (42, "WASHINGTON", "Q3 growth revised up to 4.3%", "americas"),
+    (43, "WASHINGTON", "Jobless claims fall to 189,000", "americas"),
+    (44, "WASHINGTON", "Core PCE inflation 3.3% in October", "americas"),
+    (45, "NEW YORK", "Dow erases 1,105-pt drop, ends at 50,183", "americas"),
+    (46, "US", "SpaceX cleared for 1m space data centres", "americas"),
+    (47, "IOWA", "Army detonates 10,000 lb of old lead azide", "americas"),
+    (48, "WASHINGTON", "Russia business offers shelved: FT", "americas"),
+    (49, "HAVANA", "WHO chief urges end to US fuel blockade", "americas"),
+    (50, "QUITO", "Ecuador, US review joint military operations", "americas"),
+    (51, "BRASÍLIA", "Lula signs a budget-balancing fiscal law", "americas"),
+    (52, "BUENOS AIRES", "Peso hits 1,592 per dollar", "americas"),
+    (53, "CANBERRA", "Apology to LGBTQ military veterans", "oceania"),
+    (54, "PERTH", "Deloitte barred over AI-flawed report", "oceania"),
+    (55, "SUVA", "Fiji drought: 92 communities without water", "oceania"),
 ]
 
 DATE_CHECK = (
-    "Left out as earlier news: Huang's return to Nvidia and the leaked count of Russia's war dead "
-    "(Mon 23 Nov), COP31's collapse (Sun 22 Nov), the first strike on Riyadh's PIF tower (Thu 19 Nov). "
-    "Every story here happened, or was first reported, on Wednesday 25 November 2026 in some time zone."
+    "Left out as earlier news: Huang's return to Nvidia (Mon 23), Huawei's conviction, the WHO's Ebola staff move "
+    "and the CIA–ODNI breach report (Tue 24). Not yet: US Thanksgiving (Thu 26), tariff hearings (January). "
+    "Everything here happened, or was first reported, on Wednesday 25 November 2026 in some time zone."
 )
 
 SOURCES = (
-    "Sources: Al Jazeera · Anadolu · AFP · Reuters · AAP · ABC · NBC · CNBC · TIME · "
-    "Xinhua · IRIB · UNODC · WHO · Kyiv Independent · AP · Radio Tamazuj · PACNEWS · TfL · FT · Politico"
+    "Sources: Al Jazeera · Anadolu · AFP · Reuters · AAP · ABC · CNBC · USTR · RTÉ · "
+    "Xinhua · IRIB · UNODC · Kyiv Independent · investingLive · ESPN · UEFA · Rio Times · "
+    "Radio Tamazuj · TfL · FT"
 )
