@@ -106,22 +106,24 @@ BRIEFS = [
     (13, "TAIPEI", "Taiex ends −4.8% after an 8% intraday plunge", "asia"),
     (14, "SANAA", "Houthis tell Saudi Red Sea port workers to flee", "mideast"),
     (15, "TEHRAN", "IRGC chief says forces ready to push “enemy” back", "mideast"),
-    (16, "HEBRON", "Israel gates roads used by 70,000 Palestinians", "mideast"),
-    (17, "HONIARA", "Solomons won't renew 2022 China security pact", "oceania"),
-    (18, "SUVA", "Fiji drought: 92 communities without water supply", "oceania"),
-    (19, "MANILA", "ADB sees Asia's inflation at 4.2% this year", "asia"),
-    (20, "KUALA LUMPUR", "Malaysia to send 6,803 Rohingya back to Myanmar", "asia"),
-    (21, "ODESA", "Russian strike kills two, including a teenager", "europe"),
-    (22, "WASHINGTON", "Trump team shelves business offers to Russia: FT", "americas"),
-    (23, "WASHINGTON", "Hackers breached a CIA–ODNI unclassified system", "americas"),
-    (24, "WASHINGTON", "Tariff rise readied for China, EU and 14 others", "americas"),
-    (25, "JUNEAU", "Alaska ends voter-roll deal with Justice Dept", "americas"),
-    (26, "CARACAS", "Venezuela puts its debt at $237.5bn, 242% of GDP", "americas"),
-    (27, "PARIS", "Sarkozy and Carla Bruni ordered to stand trial", "europe"),
-    (28, "BRUSSELS", "Costa pushes EU budget deal before Thursday summit", "europe"),
-    (29, "KHARTOUM", "UN says drone attack damaged one of its buildings", "africa"),
-    (30, "BUNIA, DRC", "CRP rebels halt advance, pledge to withdraw", "africa"),
-    (31, "NEW YORK", "UN day against violence on women: 129 flags", "americas"),
+    (16, "HONIARA", "Solomons won't renew 2022 China security pact", "oceania"),
+    (17, "CANBERRA", "Australia apologises to LGBTQ military veterans", "oceania"),
+    (18, "PERTH", "Deloitte barred from WA work over AI-flawed report", "oceania"),
+    (19, "SUVA", "Fiji drought: 92 communities without water supply", "oceania"),
+    (20, "KUALA LUMPUR", "Malaysia Airlines' parent orders 10 Boeing 787s", "asia"),
+    (21, "KYIV", "US rules out troops in post-war guarantees: report", "europe"),
+    (22, "KYIV REGION", "Russian strike kills one, hits delivery depots", "europe"),
+    (23, "ODESA", "Russian strike kills two, including a teenager", "europe"),
+    (24, "LONDON", "Tube strike shuts Circle and Piccadilly lines", "europe"),
+    (25, "BRUSSELS", "EU weighs €50bn fund for AI and quantum firms", "europe"),
+    (26, "BENGHAZI", "Two Libyan soldiers die after Ukraine port attack", "africa"),
+    (27, "KHARTOUM", "UN says drone attack damaged one of its buildings", "africa"),
+    (28, "WASHINGTON", "Trump team shelves business offers to Russia: FT", "americas"),
+    (29, "WASHINGTON", "Hackers breached a CIA–ODNI unclassified system", "americas"),
+    (30, "WASHINGTON", "Tariff rise readied for China, EU and 14 others", "americas"),
+    (31, "JUNEAU", "Alaska ends voter-roll deal with Justice Dept", "americas"),
+    (32, "CARACAS", "Venezuela puts its debt at $237.5bn, 242% of GDP", "americas"),
+    (33, "NEW YORK", "UN day against violence on women: 129 flags", "americas"),
 ]
 
 DATE_CHECK = (
@@ -132,5 +134,5 @@ DATE_CHECK = (
 
 SOURCES = (
     "Sources: Al Jazeera · Anadolu · AFP · Reuters · AAP · AFR · CNBC · TIME · "
-    "Xinhua · IRIB · Kyiv Independent · WORLD · Radio Tamazuj · PACNEWS · FT · Politico"
+    "Xinhua · IRIB · Kyiv Independent · AP · WORLD · Radio Tamazuj · PACNEWS · TfL · FT · Politico"
 )

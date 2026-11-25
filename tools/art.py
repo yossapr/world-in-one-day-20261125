@@ -91,8 +91,8 @@ def markets():
     board = []
     for i, (k, v) in enumerate(rows):
         yy = 30 + i * 17
-        board.append(f'<text x="236" y="{yy}" font-size="8.5" fill="#cfd8e3" font-family="Arial" font-weight="bold">{k}</text>'
-                     f'<text x="312" y="{yy}" font-size="9.5" fill="#ff5a4f" font-family="Arial" font-weight="bold" text-anchor="end">▼ {v}</text>')
+        board.append(f'<text x="226" y="{yy}" font-size="7.5" fill="#cfd8e3" font-family="Arial" font-weight="bold">{k}</text>'
+                     f'<text x="312" y="{yy}" font-size="9" fill="#ff5a4f" font-family="Arial" font-weight="bold" text-anchor="end">▼{v}</text>')
     return f"""
 <svg viewBox="0 0 320 150" preserveAspectRatio="xMidYMid slice">
  <rect width="320" height="150" fill="#0f1722"/>
@@ -103,7 +103,7 @@ def markets():
  <polygon points="{area}" fill="#ff3b30" opacity="0.16"/>
  <polyline points="{line}" fill="none" stroke="#ff4d42" stroke-width="2.4" stroke-linejoin="round"/>
  <circle cx="{14 + 40 * 5.2:.1f}" cy="{y:.1f}" r="3.2" fill="#ff4d42"/>
- <rect x="226" y="14" width="90" height="112" rx="3" fill="#162233" stroke="#26384f"/>
+ <rect x="220" y="14" width="96" height="112" rx="3" fill="#162233" stroke="#26384f"/>
  {''.join(board)}
  <g transform="translate(30,86)">
   <rect x="0" y="0" width="34" height="34" rx="3" fill="#2a3442" stroke="#8da2bb" stroke-width="1.2"/>

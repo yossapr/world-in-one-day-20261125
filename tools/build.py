@@ -188,11 +188,11 @@ html,body {{ width:{SIZE}px; height:{SIZE}px; overflow:hidden; background:#f8f4e
 .legend i {{ width:8px; height:8px; display:inline-block; margin-right:3px; vertical-align:-1px; }}
 .briefs {{ flex:1; }}
 .briefs ul {{ list-style:none; columns:2; column-gap:14px; }}
-.briefs li {{ font:9.6px/12.4px Arial, sans-serif; color:#222; break-inside:avoid; padding-left:16px;
+.briefs li {{ font:9.6px/11.8px Arial, sans-serif; color:#222; break-inside:avoid; padding-left:16px;
   text-indent:-16px; }}
 .briefs li em {{ font-style:normal; font-weight:bold; display:inline-block; width:16px; text-indent:0; }}
 .briefs li b {{ font-size:8.4px; letter-spacing:.5px; color:#141414; }}
-.check {{ margin:7px 14px 0; border:1.5px solid #b3261e; background:#fbeee8; padding:4px 8px;
+.check {{ margin:5px 14px 0; border:1.5px solid #b3261e; background:#fbeee8; padding:4px 8px;
   font:9.6px/12.5px Arial, sans-serif; color:#3a2a26; }}
 .check b {{ color:#b3261e; letter-spacing:1px; margin-right:6px; }}
 .foot {{ position:absolute; left:0; right:0; bottom:0; height:28px; padding:2px 14px 0;
