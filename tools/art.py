@@ -58,7 +58,7 @@ def launch():
   <path d="M104 40 L130 40 M104 60 L130 60 M104 80 L130 80 M104 100 L130 100" stroke="#8a8f98" stroke-width="2"/>
   <path d="M104 34 L112 42 L104 50 L112 58 L104 66 L112 74 L104 82 L112 90 L104 98 L112 106" stroke="#6c717a" stroke-width="1" fill="none"/>
  </g>
- <g transform="translate(150,0)">
+ <g transform="translate(150,16)">
   <path d="M-4 12 L0 2 L4 12Z" fill="#d8d8d8"/>
   <rect x="-5" y="12" width="10" height="16" fill="#f4f4f4"/>
   <rect x="-7" y="28" width="14" height="66" fill="#f7f7f7" stroke="#c9c9c9" stroke-width="0.6"/>
@@ -115,54 +115,54 @@ def markets():
 </svg>"""
 
 
-def _tanker(x, y, s, fire=True, flip=False):
+def _tanker(x, y, s, flip=False):
+    """An oil tanker with its stern ablaze: flames, glow and a smoke column."""
     tr = f"translate({x},{y}) scale({-s if flip else s},{s})"
-    flame = ""
-    if fire:
-        flame = ('<path d="M46 -14 C40 -26 50 -30 46 -44 C56 -34 60 -26 56 -14Z" fill="#ff8a1f"/>'
-                 '<path d="M48 -14 C46 -22 52 -24 50 -32 C56 -26 56 -20 54 -14Z" fill="#ffd34d"/>'
-                 '<path d="M44 -42 C30 -60 60 -70 40 -92 C70 -80 76 -58 58 -40Z" fill="#2c2c30" opacity="0.75"/>')
     return f"""<g transform="{tr}">
- {flame}
- <path d="M-60 0 L60 0 L52 14 L-54 14Z" fill="#7a2e22"/>
- <rect x="-60" y="-4" width="120" height="5" fill="#2f2f33"/>
- <path d="M-46 -4 V-9 H30 V-4" fill="#55555c"/>
- <rect x="38" y="-20" width="18" height="16" fill="#e7e2d6"/>
- <rect x="41" y="-17" width="12" height="3" fill="#3a4a5c"/>
- <rect x="47" y="-28" width="4" height="8" fill="#2f2f33"/>
+ <ellipse cx="44" cy="-24" rx="30" ry="22" fill="#ff9a3c" opacity="0.28"/>
+ <path d="M36 -40 C18 -70 62 -78 34 -112 C78 -96 86 -66 60 -40Z" fill="#2c2c30" opacity="0.8"/>
+ <path d="M34 -12 C24 -30 40 -36 34 -54 C50 -42 58 -30 54 -12Z" fill="#ff7a1a"/>
+ <path d="M40 -12 C36 -24 46 -28 44 -40 C54 -30 54 -20 50 -12Z" fill="#ffd34d"/>
+ <path d="M-64 0 L66 0 L56 18 L-58 18Z" fill="#7a2e22"/>
+ <rect x="-64" y="-5" width="130" height="6" fill="#2f2f33"/>
+ <path d="M-50 -5 V-11 H24 V-5" fill="#55555c"/>
+ <rect x="30" y="-24" width="22" height="19" fill="#e7e2d6"/>
+ <rect x="33" y="-20" width="16" height="4" fill="#3a4a5c"/>
+ <rect x="40" y="-32" width="5" height="8" fill="#2f2f33"/>
+ <path d="M-58 18 L56 18" stroke="#ff9a3c" stroke-width="1" opacity="0.5"/>
 </g>"""
 
 
 def hormuz():
-    """Dusk in the strait: two burning tankers between Iran and Oman."""
+    """Dusk in the strait: two burning tankers between Iran and Oman, a mine in the water."""
     waves = "".join(
-        f'<path d="M{x} {y} q6 -3 12 0 t12 0" stroke="#5b86a8" stroke-width="0.8" fill="none" opacity="0.6"/>'
-        for x, y in [(10, 120), (60, 134), (120, 126), (200, 138), (250, 122), (290, 140), (30, 144), (160, 146)]
+        f'<path d="M{x} {y} q6 -3 12 0 t12 0" stroke="#6b96b8" stroke-width="0.9" fill="none" opacity="0.6"/>'
+        for x, y in [(12, 96), (66, 128), (150, 100), (196, 132), (262, 98), (290, 126), (120, 130), (20, 112)]
     )
     return f"""
 <svg viewBox="0 0 320 150" preserveAspectRatio="xMidYMid slice">
  <defs>
   <linearGradient id="skyH" x1="0" y1="0" x2="0" y2="1">
-   <stop offset="0" stop-color="#2a3550"/><stop offset="0.6" stop-color="#b8664a"/><stop offset="1" stop-color="#f0a35e"/>
+   <stop offset="0" stop-color="#2a3550"/><stop offset="0.65" stop-color="#b8664a"/><stop offset="1" stop-color="#f0a35e"/>
   </linearGradient>
   <linearGradient id="seaH" x1="0" y1="0" x2="0" y2="1">
-   <stop offset="0" stop-color="#2f5674"/><stop offset="1" stop-color="#16324a"/>
+   <stop offset="0" stop-color="#3a6584"/><stop offset="1" stop-color="#16324a"/>
   </linearGradient>
  </defs>
- <rect width="320" height="92" fill="url(#skyH)"/>
- <path d="M0 78 L40 70 L80 74 L130 64 L170 72 L190 92 L0 92Z" fill="#6b4b3e"/>
- <path d="M210 92 L230 80 L270 76 L320 82 L320 92Z" fill="#5c4237"/>
- <text x="70" y="86" font-size="9" fill="#f6e3cf" font-family="Arial" font-weight="bold" letter-spacing="2">IRAN</text>
- <text x="262" y="89" font-size="8" fill="#f6e3cf" font-family="Arial" font-weight="bold" letter-spacing="2">OMAN</text>
- <rect y="92" width="320" height="58" fill="url(#seaH)"/>
+ <rect width="320" height="84" fill="url(#skyH)"/>
+ <path d="M0 70 L40 62 L80 66 L130 56 L170 64 L196 84 L0 84Z" fill="#6b4b3e"/>
+ <path d="M214 84 L234 72 L272 68 L320 74 L320 84Z" fill="#5c4237"/>
+ <text x="64" y="78" font-size="9" fill="#f6e3cf" font-family="Arial" font-weight="bold" letter-spacing="2">IRAN</text>
+ <text x="262" y="81" font-size="8" fill="#f6e3cf" font-family="Arial" font-weight="bold" letter-spacing="2">OMAN</text>
+ <rect y="84" width="320" height="66" fill="url(#seaH)"/>
  {waves}
- {_tanker(92, 116, 0.9)}
- {_tanker(232, 128, 0.75, flip=True)}
- <ellipse cx="128" cy="116" rx="26" ry="3" fill="#ff8a1f" opacity="0.35"/>
- <g fill="#1b1b1e">
-  <circle cx="168" cy="128" r="4"/><path d="M168 122 v-3 M162 126 l-3 -2 M174 126 l3 -2 M164 124 l-2 -3 M172 124 l2 -3" stroke="#1b1b1e" stroke-width="1.2"/>
+ {_tanker(112, 104, 0.95)}
+ {_tanker(250, 112, 0.72, flip=True)}
+ <ellipse cx="150" cy="108" rx="30" ry="3.5" fill="#ff8a1f" opacity="0.35"/>
+ <g transform="translate(186,121)" fill="#141416" stroke="#141416" stroke-width="1.3">
+  <circle r="5"/><path d="M0 -5 v-3 M-5 -2 l-3 -2 M5 -2 l3 -2 M-3.5 -4 l-2 -3 M3.5 -4 l2 -3"/>
  </g>
- <text x="176" y="131" font-size="7" fill="#d6e6f2" font-family="Arial">NAVAL MINE</text>
+ <text x="178" y="129" font-size="7" fill="#e3eef6" font-family="Arial" font-weight="bold" text-anchor="end">NAVAL MINE</text>
 </svg>"""
 
 
@@ -222,7 +222,7 @@ def mine():
  <g transform="translate(150,22)"><circle r="4" fill="#ffcf3a"/><rect x="-3" y="4" width="6" height="9" fill="#ff7a1a"/></g>
  <g transform="translate(110,18)"><circle r="3.5" fill="#ffcf3a"/><rect x="-3" y="3.5" width="6" height="8" fill="#ff7a1a"/></g>
  <path d="M200 0 Q206 30 196 60" stroke="#6c8ea8" stroke-width="5" fill="none" opacity="0.8"/>
- <text x="6" y="74" font-size="7" fill="#fff" font-family="Arial" font-weight="bold">100 M DEEP</text>
+ <text x="30" y="68" font-size="7" fill="#fff" font-family="Arial" font-weight="bold">100 M DEEP</text>
 </svg>"""
 
 
@@ -331,5 +331,62 @@ def cuba():
 </svg>"""
 
 
+def femicide():
+    """UNODC / UN Women rates of femicide by partners or family, per 100,000 women."""
+    rows = [("AFRICA", 2.9), ("AMERICAS", 1.4), ("OCEANIA", 1.1), ("ASIA", 0.6), ("EUROPE", 0.5)]
+    bars = []
+    for i, (name, v) in enumerate(rows):
+        y = 19 + i * 11.5
+        w = v / 2.9 * 96
+        bars.append(f'<text x="136" y="{y + 8}" font-size="7" fill="#f3e9e4" font-family="Arial" font-weight="bold">{name}</text>'
+                    f'<rect x="176" y="{y}" width="{w:.1f}" height="8" fill="#e8743b"/>'
+                    f'<text x="{176 + w + 3:.1f}" y="{y + 8}" font-size="7" fill="#f3e9e4" font-family="Arial">{v}</text>')
+    flags = "".join(
+        f'<path d="M{10 + (i % 6) * 9} {44 + (i // 6) * 13} v-9 l6 2.2 l-6 2.2" fill="#ff8c3a" stroke="#ffd9c0" stroke-width="0.4"/>'
+        for i in range(18))
+    return f"""
+<svg viewBox="0 0 240 84" preserveAspectRatio="xMidYMid slice">
+ <rect width="240" height="84" fill="#3b2433"/>
+ <text x="10" y="22" font-size="16" fill="#ffb37a" font-family="Georgia" font-weight="bold">47,000</text>
+ <text x="10" y="32" font-size="7" fill="#f3e9e4" font-family="Arial">KILLED IN 2025 · 5 AN HOUR</text>
+ {flags}
+ <text x="136" y="15" font-size="6" fill="#d9c3cc" font-family="Arial">RATE PER 100,000 WOMEN</text>
+ {''.join(bars)}
+</svg>"""
+
+
+def signing():
+    """Two leaders sign at a table in Canberra, flags behind them."""
+    return """
+<svg viewBox="0 0 240 84" preserveAspectRatio="xMidYMid slice">
+ <rect width="240" height="84" fill="#dfe9f1"/>
+ <rect y="58" width="240" height="26" fill="#b99a74"/>
+ <g transform="translate(26,10)">
+  <path d="M0 0 V46" stroke="#8a8a8a" stroke-width="1.5"/>
+  <rect x="1" y="0" width="34" height="20" fill="#1d3b8a"/>
+  <path d="M1 0 L15 9 M15 0 L1 9" stroke="#fff" stroke-width="1.8"/><path d="M8 0 V9 M1 4.5 H15" stroke="#fff" stroke-width="2.4"/>
+  <path d="M8 0 V9 M1 4.5 H15" stroke="#c8102e" stroke-width="1.1"/>
+  <circle cx="26" cy="6" r="1.3" fill="#fff"/><circle cx="26" cy="15" r="1.3" fill="#fff"/><circle cx="21" cy="11" r="1.3" fill="#fff"/><circle cx="31" cy="10" r="1.3" fill="#fff"/><circle cx="8" cy="15" r="1.8" fill="#fff"/>
+ </g>
+ <g transform="translate(180,10)">
+  <path d="M34 0 V46" stroke="#8a8a8a" stroke-width="1.5"/>
+  <rect x="0" y="0" width="34" height="20" fill="#1f6fb2"/>
+  <path d="M34 0 V20 H0Z" fill="#2e8b3e"/><path d="M0 20 L34 0" stroke="#f2c418" stroke-width="3.2"/>
+  <circle cx="5" cy="4" r="0.9" fill="#fff"/><circle cx="10" cy="4" r="0.9" fill="#fff"/><circle cx="7.5" cy="7.5" r="0.9" fill="#fff"/><circle cx="5" cy="11" r="0.9" fill="#fff"/><circle cx="10" cy="11" r="0.9" fill="#fff"/>
+ </g>
+ <g>
+  <circle cx="92" cy="30" r="8" fill="#e8c4a0"/><path d="M84 27 q8 -9 16 0" fill="#9a8a7a"/>
+  <path d="M80 58 q0 -18 12 -18 q12 0 12 18Z" fill="#26324a"/>
+  <circle cx="148" cy="30" r="8" fill="#8a5a3a"/><path d="M140 27 q8 -9 16 0" fill="#1e1a18"/>
+  <path d="M136 58 q0 -18 12 -18 q12 0 12 18Z" fill="#2a3a5a"/>
+ </g>
+ <rect x="60" y="54" width="120" height="8" fill="#6b4a2a"/>
+ <rect x="104" y="50" width="32" height="5" fill="#fff" stroke="#bbb" stroke-width="0.5"/>
+ <path d="M100 52 l8 -4 M140 52 l-8 -4" stroke="#1a1a1a" stroke-width="1.6"/>
+ <text x="120" y="71" font-size="7" fill="#fff" text-anchor="middle" font-family="Arial" font-weight="bold">SIGNED · 25 NOV</text>
+</svg>"""
+
+
 ART = dict(launch=launch, markets=markets, hormuz=hormuz, court=court, drones=drones,
-           mine=mine, garment=garment, treaty=treaty, refinery=refinery, sudan=sudan, cuba=cuba)
+           mine=mine, garment=garment, treaty=signing, refinery=refinery, sudan=sudan, cuba=cuba,
+           femicide=femicide)

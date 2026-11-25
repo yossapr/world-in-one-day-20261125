@@ -32,8 +32,8 @@ SIZE = 1024
 MAX_BYTES = 1048576
 
 # Map frame: equirectangular, longitudes -170..190 so the Pacific islands stay whole.
-LON0, LON1, LAT0, LAT1 = -170.0, 190.0, -50.0, 78.0
-MAP_W, MAP_H = 330, 118
+LON0, LON1, LAT0, LAT1 = -170.0, 190.0, -45.0, 75.0
+MAP_W, MAP_H = 330, 110
 
 
 def esc(s):
@@ -85,13 +85,23 @@ def region_color(key):
     return ed.REGIONS[key][1]
 
 
+def sure_html(label):
+    col = ed.SURE[label][0]
+    return f'<span class="sure" style="color:{col};border-color:{col}">{esc(label)}</span>'
+
+
+def timeline_html():
+    items = "".join(f'<span class="ev"><b>{esc(t)}</b> {esc(x)}</span>' for t, x in ed.TIMELINE)
+    return f'<div class="timeline"><span class="tl">THE DAY IN UTC</span>{items}</div>'
+
+
 def lead_html(i, s):
     c = region_color(s["region"])
     return f"""
 <article class="lead">
   <div class="scene">{art.ART[s['art']]()}<span class="num" style="background:{c}">{i}</span></div>
   <div class="meta"><span class="tag" style="background:{c}">{esc(s['tag'])}</span>
-    <span class="where">{esc(s['place'])} \u00b7 {esc(s['beat'])}</span></div>
+    <span class="where">{esc(s['place'])} \u00b7 {esc(s['beat'])}</span>{sure_html(s['sure'])}</div>
   <h2>{esc(s['head'])}</h2>
   <p>{esc(s['dek'])}</p>
   <div class="src">{esc(s['src'])}</div>
@@ -103,7 +113,7 @@ def card_html(i, s):
     return f"""
 <article class="card">
   <div class="scene">{art.ART[s['art']]()}<span class="num" style="background:{c}">{i}</span></div>
-  <div class="where"><i style="background:{c}"></i>{esc(s['place'])}</div>
+  <div class="where"><i style="background:{c}"></i>{esc(s['place'])}{sure_html(s['sure'])}</div>
   <h3>{esc(s['head'])}</h3>
   <p>{esc(s['dek'])}</p>
 </article>"""
@@ -138,6 +148,7 @@ def page(land_d):
     briefs = "".join(
         f'<li><em style="color:{region_color(r)}">{n}</em><b>{esc(p)}</b> {esc(t)}</li>'
         for n, p, t, r in ed.BRIEFS)
+    sure_legend = " ".join(f'<i style="color:{c};border-color:{c}">{esc(k)}</i> {esc(m)}' for k, (c, m) in ed.SURE.items())
     legend = "".join(f'<span><i style="background:{c}"></i>{esc(n)}</span>' for n, c in ed.REGIONS.values())
     return f"""<!doctype html><html><head><meta charset="utf-8"><style>
 * {{ box-sizing:border-box; margin:0; padding:0; }}
@@ -154,14 +165,14 @@ html,body {{ width:{SIZE}px; height:{SIZE}px; overflow:hidden; background:#f8f4e
   letter-spacing:.8px; }}
 .strip span {{ display:flex; align-items:center; justify-content:center; white-space:nowrap; overflow:hidden; }}
 .kpis {{ display:flex; margin:6px 14px 0; border-top:1px solid #141414; border-bottom:1px solid #141414; }}
-.kpi {{ flex:1; padding:4px 8px 4px; border-left:1px solid #cfc6b2; }}
+.kpi {{ flex:1; padding:3px 8px 3px; border-left:1px solid #cfc6b2; }}
 .kpi:first-child {{ border-left:none; padding-left:2px; }}
 .kpi b {{ display:block; font:bold 24px Georgia, serif; line-height:26px; color:#b3261e; }}
 .kpi span {{ display:block; font:10px/12px Arial, sans-serif; color:#333; }}
-.leads {{ display:flex; gap:14px; margin:8px 14px 0; }}
+.leads {{ display:flex; gap:14px; margin:7px 14px 0; }}
 .lead {{ flex:1; }}
 .scene {{ position:relative; overflow:hidden; border-radius:2px; }}
-.lead .scene {{ height:126px; }}
+.lead .scene {{ height:118px; }}
 .scene svg {{ width:100%; height:100%; display:block; }}
 .num {{ position:absolute; left:6px; bottom:6px; width:18px; height:18px; border-radius:50%; color:#fff;
   font:bold 10px/18px Arial, sans-serif; text-align:center; border:1.5px solid #fff; }}
@@ -171,28 +182,38 @@ html,body {{ width:{SIZE}px; height:{SIZE}px; overflow:hidden; background:#f8f4e
 .lead h2 {{ font-size:21px; line-height:23px; margin-top:4px; }}
 .lead p {{ font:12px/15px Georgia, serif; color:#2a2a2a; margin-top:3px; }}
 .src {{ font:bold 7.5px Arial, sans-serif; letter-spacing:.8px; color:#8a8170; margin-top:3px; }}
-.rule {{ margin:8px 14px 0; border-top:2px solid #141414; display:flex; justify-content:space-between;
+.rule {{ margin:6px 14px 0; border-top:2px solid #141414; display:flex; justify-content:space-between;
   font:bold 9.5px Arial, sans-serif; letter-spacing:1.5px; padding-top:3px; }}
-.rule span:last-child {{ color:#8a8170; }}
+.rule .how {{ color:#555; font:8px Arial, sans-serif; letter-spacing:.3px; }}
+.rule .how i {{ font:bold 7.5px Arial, sans-serif; font-style:normal; border:1px solid; padding:0 3px; margin-left:4px; }}
+.sure {{ margin-left:auto; font:bold 7.5px Arial, sans-serif; letter-spacing:.6px; border:1px solid; padding:0 3px;
+  line-height:11px; flex:none; }}
+.card .where .sure {{ font-size:7px; line-height:10px; }}
+.timeline {{ display:flex; align-items:center; margin:5px 14px 0; height:16px; border-bottom:1px solid #cfc6b2;
+  font:9px Arial, sans-serif; color:#222; }}
+.timeline .tl {{ background:#141414; color:#fff; font:bold 8.5px Arial, sans-serif; letter-spacing:1.2px;
+  padding:2px 6px; margin-right:6px; }}
+.timeline .ev {{ flex:1; white-space:nowrap; border-left:2px solid #b3261e; padding-left:5px; }}
+.timeline .ev b {{ color:#b3261e; }}
 .cards {{ display:grid; grid-template-columns:repeat(4,1fr); gap:7px 14px; margin:5px 14px 0; }}
-.card .scene {{ height:70px; }}
-.card .where {{ margin-top:4px; display:flex; align-items:center; gap:4px; font-size:8px; }}
+.card .scene {{ height:66px; }}
+.card .where {{ margin-top:4px; display:flex; align-items:center; gap:4px; font-size:8px; overflow:visible; }}
 .card .where i {{ width:7px; height:7px; display:inline-block; }}
 .card h3 {{ font-size:15px; line-height:17px; margin-top:2px; }}
 .card p {{ font:10.5px/13px Arial, sans-serif; color:#333; margin-top:2px; }}
 .bottom {{ display:flex; gap:14px; margin:7px 14px 0; border-top:2px solid #141414; padding-top:5px; }}
 .mapbox {{ width:330px; flex:none; }}
 .mapbox h4, .briefs h4 {{ font:bold 9.5px Arial, sans-serif; letter-spacing:1.5px; margin-bottom:4px; }}
-.map {{ width:330px; height:118px; display:block; }}
-.legend {{ display:flex; flex-wrap:wrap; gap:2px 9px; margin-top:4px; font:8.5px Arial, sans-serif; color:#333; }}
-.legend i {{ width:8px; height:8px; display:inline-block; margin-right:3px; vertical-align:-1px; }}
+.map {{ width:330px; height:110px; display:block; }}
+.legend {{ display:flex; flex-wrap:nowrap; gap:7px; margin-top:4px; font:8px Arial, sans-serif; color:#333; white-space:nowrap; }}
+.legend i {{ width:7px; height:7px; display:inline-block; margin-right:2px; vertical-align:-1px; }}
 .briefs {{ flex:1; }}
 .briefs ul {{ list-style:none; columns:2; column-gap:14px; }}
-.briefs li {{ font:9.6px/11.8px Arial, sans-serif; color:#222; break-inside:avoid; padding-left:16px;
+.briefs li {{ font:9.6px/11.5px Arial, sans-serif; color:#222; break-inside:avoid; padding-left:16px;
   text-indent:-16px; }}
 .briefs li em {{ font-style:normal; font-weight:bold; display:inline-block; width:16px; text-indent:0; }}
 .briefs li b {{ font-size:8.4px; letter-spacing:.5px; color:#141414; }}
-.check {{ margin:5px 14px 0; border:1.5px solid #b3261e; background:#fbeee8; padding:4px 8px;
+.check {{ margin:4px 14px 0; border:1.5px solid #b3261e; background:#fbeee8; padding:3px 8px;
   font:9.6px/12.5px Arial, sans-serif; color:#3a2a26; }}
 .check b {{ color:#b3261e; letter-spacing:1px; margin-right:6px; }}
 .foot {{ position:absolute; left:0; right:0; bottom:0; height:28px; padding:2px 14px 0;
@@ -204,9 +225,10 @@ html,body {{ width:{SIZE}px; height:{SIZE}px; overflow:hidden; background:#f8f4e
 <header class="mast"><h1>{esc(ed.DAY)}</h1>
 <div class="sub">Pakistan's first astronaut flies to Tiangong <b>\u25c6</b> Asia's chip stocks crash <b>\u25c6</b> Tankers burn in Hormuz</div></header>
 <div class="strip">{strip}</div>
+{timeline_html()}
 <div class="kpis">{kpis}</div>
 <section class="leads">{leads}</section>
-<div class="rule"><span>ALSO ON WEDNESDAY 25 NOVEMBER</span><span>EVERY SCENE DRAWN, EVERY STORY SOURCED</span></div>
+<div class="rule"><span>ALSO ON WEDNESDAY 25 NOVEMBER</span><span class="how">HOW SURE: {sure_legend}</span></div>
 <section class="cards">{cards}</section>
 <section class="bottom">
  <div class="mapbox"><h4>WHERE IT HAPPENED \u00b7 PINS = STORY NUMBERS</h4>{map_svg(land_d)}<div class="legend">{legend}</div></div>
