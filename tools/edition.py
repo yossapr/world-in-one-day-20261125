@@ -61,6 +61,7 @@ LEADS = [
         head="Shenzhou-24 flies a Pakistani to Tiangong",
         dek="Zeeshan Ali is the first foreigner to fly to Tiangong; the crew "
             "docked hours after the Long March 2F lifted off.",
+        why="China's station opens to foreign crews",
         src="XINHUA · AA · REUTERS",
     ),
     dict(
@@ -69,6 +70,7 @@ LEADS = [
         head="Asia's chip stocks crash on AI doubts",
         dek="Samsung −9.9%, SK Hynix −11.1%; in New York the Nasdaq "
             "fell 4.6% before clawing back to −0.6%.",
+        why="Doubts grow that the AI boom will pay off",
         src="AL JAZEERA · AFP · INVESTINGLIVE",
     ),
     dict(
@@ -77,6 +79,7 @@ LEADS = [
         head="US proposes new tariffs on 14 economies",
         dek="USTR's “excess capacity” plan: 20% more on China, up to 35% "
             "on Vietnam; hearings in January.",
+        why="Allies and rivals alike, from the EU to Vietnam",
         src="USTR · REUTERS · RTÉ · AL JAZEERA",
     ),
 ]
@@ -107,10 +110,10 @@ CARDS = [
          head="Saudis down Houthi drones over oil port",
          dek="Four destroyed after coalition strikes on Hodeidah; Houthis threaten Jeddah.",
          src="AL JAZEERA · AFP"),
-    dict(art="mine", region="asia", place="BOGOR, INDONESIA", sure="OFFICIAL", chip="26 TRAPPED",
-         head="26 trapped in flooded gold mine",
-         dek="Rescuers search a 100-metre pit at Pongkor after a river burst its banks.",
-         src="AL JAZEERA · REUTERS"),
+    dict(art="mine", region="asia", place="BOGOR, INDONESIA", sure="OFFICIAL", chip="9 DEAD · 17 TRAPPED",
+         head="Flooded gold mine: 9 dead, 17 trapped",
+         dek="A river burst into an illegal shaft at Pongkor; bodies found 30–70 m down.",
+         src="AP · AL JAZEERA · KOREA TIMES"),
     dict(art="garment", region="asia", place="DHAKA, BANGLADESH", sure="OFFICIAL", chip="+36% PAY",
          head="Garment workers win 36% pay rise",
          dek="Minimum wage to rise to 17,500 taka ($136) a month after weeks of protest.",

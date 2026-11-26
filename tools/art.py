@@ -222,7 +222,7 @@ def mine():
  <g transform="translate(150,22)"><circle r="4" fill="#ffcf3a"/><rect x="-3" y="4" width="6" height="9" fill="#ff7a1a"/></g>
  <g transform="translate(110,18)"><circle r="3.5" fill="#ffcf3a"/><rect x="-3" y="3.5" width="6" height="8" fill="#ff7a1a"/></g>
  <path d="M200 0 Q206 30 196 60" stroke="#6c8ea8" stroke-width="5" fill="none" opacity="0.8"/>
- <text x="120" y="16" text-anchor="middle" font-size="7" fill="#fff" font-family="Arial" font-weight="bold">100 M DEEP</text>
+ <text x="50" y="14" text-anchor="middle" font-size="7.5" fill="#fff" font-family="Arial" font-weight="bold">BODIES 30–70 M DOWN</text>
 </svg>"""
 
 
